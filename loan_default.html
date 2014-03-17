@@ -150,7 +150,7 @@ Released   : 20130804
 			RandomForestRegressor to generate predictions of the loss.
 			
 			<p><p>My most useful insight here was to train the classifier on my training subset, then apply the
-			classifier to the training subset and use all the loans classified as "default" to train my regressor. 
+			classifier to the training subset and use all the loans that my classifier identified as "default" to train my regressor. 
 			This meant that I included loans that the classifier had incorrectly labelled as "default" when I 
 			trained the regressor. 
 			
