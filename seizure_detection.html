@@ -147,12 +147,14 @@ Released   : 20130804
 			<table><tr width=900>			
 			<td width=450 valign=top><font style="line-height:2.0">
 			The best part of this Kaggle challenge was trying out some novel ways to harness the power of the pre-trained neural net in nolearn. 
-			<li><b>Appending data from other channels or patients to the training set for a given channel.</b>
-			<p>I tried training one model for all the electrodes of one patient, as well as appending signals from other patients to the training data. I thought doing so would force nolearn to make better use of the most relevant features of the signal images. Unfortunately, the predictions did not improve.
-			<li><b>Using the whole FFT instead of the raw signal.</b>
-			<p>A cursory literature search indicated that existing seizure detection algorithms had some success using the FFT of the signal instead of just the raw signal. I found that feeding the signal FFT to nolearn did not produce better predictions than the raw signal alone. In addition, when I ensembled predictions from the FFT and the raw signal from different channels, the predictions were not better than with just the raw signal. <a href="https://www.kaggle.com/c/seizure-detection/forums/t/10079/features-for-seizure-detection">Other Kagglers</a> seem to have had more success with using a small frequency band in their models.
 			<li><b>Placing the signals from all channels together in one image</b>
 			<p>Instead of feeding images of signals from a single channel to the nolearn classifier, I glued images of all the signals from each electrode together and fed the resulting <it>giant image</it> to nolearn. However, the signals had to be down-sampled so that the giant training images would fit in memory and this strategy did not improve classification accuracy.
+
+			<li><b>Using the whole FFT instead of the raw signal.</b>
+			<p>A cursory literature search indicated that existing seizure detection algorithms had some success using the FFT of the signal instead of just the raw signal. I found that feeding the signal FFT to nolearn did not produce better predictions than the raw signal alone. In addition, when I ensembled predictions from the FFT and the raw signal from different channels, the predictions were not better than with just the raw signal. <a href="https://www.kaggle.com/c/seizure-detection/forums/t/10079/features-for-seizure-detection">Other Kagglers</a> seem to have had more success with using a small frequency band in their models.
+			
+			<li><b>Appending data from other channels or patients to the training set for a given channel.</b>
+			<p>I tried training one model for all the electrodes of one patient, as well as appending signals from other patients to the training data. I thought doing so would force nolearn to make better use of the most relevant features of the signal images. Unfortunately, the predictions did not improve.			
 			</ol>
 			
 			</td>
@@ -161,7 +163,13 @@ Released   : 20130804
 			<figure>
 			<img src="seizure_detection/multi_channel_image.png" width=450 >
 			<figcaption width=450>Signals from all 16 electrodes in one image (Dog_1). </figcaption></figure>
-			</td>			
+			
+			<figure>
+			<img src="seizure_detection/fft_dog_1_chan_15.png" width=450 >
+			<figcaption width=450>Cumulative FFTs for non-seizure, early seizure and late seizure (channel 15, Dog_1). </figcaption></figure>
+			</td>		
+			
+				
 
 			
 			</tr>	
