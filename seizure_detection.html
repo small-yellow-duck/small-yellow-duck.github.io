@@ -1,0 +1,185 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!--
+Design by Free CSS Templates
+http://www.freecsstemplates.org
+Released for free under a Creative Commons Attribution 2.5 License
+
+Name       : SquareAway 
+Description: A four-column, fixed-width design with dark color scheme.
+Version    : 1.0
+Released   : 20130804
+
+-->
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>SquareAway</title>
+<meta name="keywords" content="" />
+<meta name="description" content="" />
+<link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900|Open+Sans:400,300,600,700,800" rel="stylesheet" />
+<link href="default.css" rel="stylesheet" type="text/css" media="all" />
+<link href="fonts.css" rel="stylesheet" type="text/css" media="all" />
+
+<!--[if IE 6]><link href="default_ie6.css" rel="stylesheet" type="text/css" /><![endif]-->
+
+</head>
+<body>
+<div id="logo" class="container">
+	<h1><a href="#" class="icon icon-spinner"><span>big data? small yellow duck</span></a></h1>
+</div>
+<div id="header">
+	<div id="menu" class="container">
+		<ul>
+			<li class="current_page_item"><a href="index.html" accesskey="1" title="">Homepage</a></li>
+			<li><a href="about.html" accesskey="1" title="">About</a></li>
+
+		</ul>
+	</div>
+</div>
+
+
+<div id="page-wrapper">
+	<div id="banner" class="container"><a href="#"><img src="images/skyline.jpg" width="1200"  alt="" /></a></div>
+
+	
+	<div id="featured" class="container">
+		<div class="box">
+			<div class="title">
+				<h2>Identifying epileptic seizures</h2>
+			</div>
+			<p>
+			<hr width=900 align=left>
+			<table><tr width=900>
+			<td width=900>
+			<font style="line-height:2.0"> 
+			The goal of the Kaggle <a 		href='https://www.kaggle.com/c/walmart-recruiting-store-sales-forecasting'>Seizure Detection Challenge</a> was to identify when a patient has an epileptic seizure given 1 second clips of signals from electrodes implanted in the patient's head. My python code is <a href='https://github.com/small-yellow-duck/seizure_detection'>here</a>.
+			</td>
+			</tr></table>
+			
+			<hr width=900 align=left>
+			
+			<p>
+
+			<table><tr width=900>
+			<td width = 450 valign=top>
+			<font style="line-height:2.0"> 
+			<p>After the 15 second mark, seizures are characterized by large fluctuations in the voltages measured at the implanted electrodes. However, part of the challenge was to identify the seizure in the first 15 seconds, before it really got going. As I examined some plots of the raw data I thought <b>"Hmmm, I don't really know what the doctors are looking for when they identify the early portions of seizures</b>."
+			<p>Instead of investing time identifying useful features in the raw data (and FFTs of the raw data) I decided to see if I could get any useful predictions using <a href="https://pythonhosted.org/nolearn/convnet.html"><tt>nolearn</tt></a>. <a href="https://pythonhosted.org/nolearn/convnet.html"><tt>nolearn</tt></a> is a pretrained neural network for classifying images that performed well in the Kaggle Cats vs Dogs image classification competition. I figured that if <a href="https://pythonhosted.org/nolearn/convnet.html"><tt>nolearn</tt></a> could distinguish cats from dogs, perhaps it could distinguish ictal (seizure) data from interictal (non-seizure) data.
+			<p>In the end, applying <a href="https://pythonhosted.org/nolearn/convnet.html"><tt>nolearn</tt></a> to the electrode signals and selecting the most predictive electrodes was not as effective as other methods which made use of manually identified features in the raw data and the power spectrum of the raw data.
+			
+			<td valign=top align=left width=300>
+			<figure>
+			<img src="seizure_detection/raw_seizure_data.png" width=350 >
+			</figure>
+			</td>	
+
+			</tr></table>
+		</div>
+	</div>			
+
+
+	<div id="featured" class="container">
+		<div class="box">	
+			<div class="title">
+				<h2>Using the <a href="https://pythonhosted.org/nolearn/convnet.html"><tt>nolearn</tt></a> image classification neural net to classify seizures</h2>
+			</div>					
+			<table>
+						<tr width=900>	
+			<td width=580 valign=top><font style="line-height:2.0">
+			My strategy involved two steps: first, I used <a href="https://pythonhosted.org/nolearn/convnet.html"><tt>nolearn</tt></a> to create a seizure-classification model for each electrode in each patient. Then I generated predictions for each channel, I combined the predictions of multiple channels. I identified the most useful channels by applying naive bayes to half of the training subset and evaluated the predictions for the remaining half of the training subset. This allowed me to weed out channels for which overfitting was the biggest problem. The final prediction was based on a naive bayes classification of the probabilities predicted by nolearn for each of the most predictive channels.
+			
+			<p>To validate the neural network strategy, I split the training data into a validation subset (1 seizure or 20% of the training seizures, whichever was more, plus 20% of the non-seizure data) and a training subset. Since <a href="https://pythonhosted.org/nolearn/convnet.html"><tt>nolearn</tt></a> took a while to process the data and because most of the training data only included 2-5 seizure events per patient, cross-validation wasn't very feasible.
+			</td>
+
+			<td valign=top align=left width=300>
+			<figure>
+			<img src="seizure_detection/dog_1_naivebayes_train_cv_scores_by_channel.png" width=300 >
+			<figcaption width=300>Training and validation scores for different electrodes (Dog_1).</figcaption></figure>
+			</td>
+			
+			</tr>
+	
+			</table>
+		</div>
+	</div>
+	
+	<div id="featured" class="container">
+		<div class="box">	
+			<div class="title">
+				<h2>Data prep</h2>
+			</div>	
+			
+			<table>			
+			<tr width=900>	
+			<td width=580 valign=top><font style="line-height:2.0">
+						
+			<p>Since the FFT of the electrode signals was just white noise at frequencies higher than 250 Hz, I down-sampled the data to 250 Hz (human patients) or 200 Hz (dogs). Next, I converted each 1-second clip to a 250 x 250 pixel images (humans) or a 200 x 200 pixel image (dogs) by first subtracting the clip mean and then rescaling the signal by 3.0 times the standard deviation for all the clips for that electrode in the 
+			
+			<p>Larger images took longer to process. In addition, the 500 x 500 pixel training data set for Patient 6 did not fit into the available memory on my laptop. Processing all the training data at 250 x 250 and 200 x 200 pixel resolution was doable overnight.
+			
+			</td>
+
+			<td valign=top align=left width=300>
+			<figure>
+			<img src="seizure_detection/fft_patient2_ictal3_channel3.png" width=300 >
+			<figcaption width=300>Power spectrum of signal from a single electrode.</figcaption></figure>
+			</td>
+			
+			</tr>
+			
+			
+
+						
+			</table>
+			
+
+			
+			
+		</div>
+	</div>
+	
+	<div id="featured" class="container">
+		<div class="box">	
+			<div class="title">
+				<h2>Interesting things I tried that didn't work</h2>
+			</div>	
+			
+			<table><tr width=900>			
+			<td width=450 valign=top><font style="line-height:2.0">
+			The best part of this Kaggle challenge was trying out some novel ways to harness the power of the pre-trained neural net in nolearn. 
+			<li><b>Appending data from other channels or patients to the training set for a given channel.</b>
+			<p>I tried training one model for all the electrodes of one patient, as well as appending signals from other patients to the training data. I thought doing so would force nolearn to make better use of the most relevant features of the signal images. Unfortunately, the predictions did not improve.
+			<li><b>Using the whole FFT instead of the raw signal.</b>
+			<p>A cursory literature search indicated that existing seizure detection algorithms had some success using the FFT of the signal instead of just the raw signal. I found that feeding the signal FFT to nolearn did not produce better predictions than the raw signal alone. In addition, when I ensembled predictions from the FFT and the raw signal from different channels, the predictions were not better than with just the raw signal. <a href="https://www.kaggle.com/c/seizure-detection/forums/t/10079/features-for-seizure-detection">Other Kagglers</a> seem to have had more success with using a small frequency band in their models.
+			<li><b>Placing the signals from all channels together in one image</b>
+			<p>Instead of feeding images of signals from a single channel to the nolearn classifier, I glued images of all the signals from each electrode together and fed the resulting <it>giant image</it> to nolearn. However, the signals had to be down-sampled so that the giant training images would fit in memory and this strategy did not improve classification accuracy.
+			</ol>
+			
+			</td>
+			<!-- generate image with tile_cv in seizure_detection2.py--> 
+			<td valign=top align=left width=450>
+			<figure>
+			<img src="seizure_detection/multi_channel_image.png" width=450 >
+			<figcaption width=450>Signals from all 16 electrodes in one image (Dog_1). </figcaption></figure>
+			</td>			
+
+			
+			</tr>	
+			</table>	
+				
+		</div>
+		
+	</div>
+
+
+
+
+</div>
+
+
+
+<div id="copyright">
+	<p>Copyright (c) 2013 small yellow duck. All rights reserved. Design by <a href="http://www.freecsstemplates.org/" rel="nofollow">FreeCSSTemplates.org</a>.</p>
+</div>
+</body>
+</html>
