@@ -63,6 +63,13 @@ background:#f9d543;
 }
 
 
+img.MaxHeight
+{
+max-height: 450px;
+}
+
+
+
 
 </style>
 
@@ -94,37 +101,53 @@ function togglestyle_how(el){
 <script type="text/javascript">
 
 var slideimages = new Array() // create new array to preload images
+var comment = new Array()
 //src, preloading that image in the process
 slideimages[0] = new Image() // create new instance of image object
 slideimages[0].src = "starry_night.jpg" // set image object src property to an image's 
+comment[0] = "Starry Night (van Gogh)"
+
 slideimages[1] = new Image()
-slideimages[1].src = "jericho_sunset2.jpg"
+slideimages[1].src = "suresh_infrared.jpg"
+comment[1] = "self portrait, mixed infrared and visible spectra (Suresh)"
+
 //slideimages[2] = new Image()
 //slideimages[2].src = "shafie005cropped.jpg"
-slideimages[3] = new Image() // create new instance of image object
-slideimages[3].src = "jericho_beach.jpg" // set image object src property to an image's 
 slideimages[2] = new Image() // create new instance of image object
 slideimages[2].src = "kayaking_mamangua.jpg" // set image object src property to an image's 
+comment[2] = "Saco de Mamangua, Brazil"
 
+slideimages[3] = new Image() // create new instance of image object
+slideimages[3].src = "jericho_beach.jpg" // set image object src property to an image's 
+comment[3] = "Jericho Beach, Vancouver"
 
 var slideimages2 = new Array()
+var comment2 = new Array()
 //an image's src, preloading that image in the process
 slideimages2[0] = new Image() // create new instance of image object
-slideimages2[0].src = "starry_night_150c_v2pt4.png" // set image object src property to 
+slideimages2[0].src = "starry_night_150c_v2pt4.png" // set image object src property to
+comment2[0] = "f(Starry Night)" 
+
 slideimages2[1] = new Image()
-slideimages2[1].src = "jericho_sunset2_150c_v2pt4.png"
+slideimages2[1].src = "suresh_infrared_150c_v2pt4.png"
+comment2[1] = "f(Suresh in the infrared)" 
+
 //slideimages2[2] = new Image()
 //slideimages2[2].src = "shafie5_1000iter_5_colourbalanced2.png"
+slideimages2[2] = new Image() // create new instance of image object
+slideimages2[2].src = "kayaking_mamangua_150c_v2pt4.png"
+comment2[2] = "f(Saco de Mamangua)" 
+
 slideimages2[3] = new Image() // create new instance of image object
 slideimages2[3].src = "jericho_sunset_150c_v2pt4.png" // set image object src property to 
-slideimages2[2] = new Image() // create new instance of image object
-slideimages2[2].src = "kayaking_mamangua_150c_v2pt4.png" // set image object src property to 
+comment2[3] = "f(Jericho Beach)" 
 
 
 
 document.getElementById('slide').src = slideimages[step].src
 document.getElementById('slide2').src = slideimages2[step].src
-
+document.getElementById('insp_comment').innerHTML = comment[step]
+document.getElementById('output_comment').innerHTML = comment2[step]
 </script>
 	
 </head>
@@ -139,25 +162,27 @@ document.getElementById('slide2').src = slideimages2[step].src
 
 
 <table width=100%>
-<tr height="500px">
+<tr >
 <td width=3%>
-<td width=45% bgcolor="#AAAAAA" align="center">
-<img id="slide" width=90% />
+<td style="width:45%;min-width:500px;" bgcolor="#AAAAAA" align="center">
+<img id="slide" style="width=90%;max-width:500px;max-height:500px;"/>
 </td>	
 <td width = 8%></td>
-<td width=43% bgcolor="#AAAAAA" align="center">	  
-<img id="slide2" width=90%/>
+<td style="width:43%;" bgcolor="#AAAAAA" align="center">	  
+<img id="slide2" style="width=90%;max-width:500px;max-height:500px;"/>
 </td>
 </tr>
 <tr>
 <td width=3%>
 <td width=43% bgcolor="#FFFFFF" align="left" valign="top">
-<p>Inspiration</p>
+<p id="insp_comment">
 </td>	
 <td width = 4%></td>
 <td width=45% bgcolor="#FFFFFF" align="left" valign="top">	  
-<p><img src="https://secure.gravatar.com/avatar/1a5e33c07da3f61716b593cbeb9fbdad.png?r=pg&s=240&d=https://www.kaggle.com/content/shared/img/default-avatar.png" width="20px">
-Python, physical simulation of bubbles with viscous drag, colours sampled from image at left using k-means</p>
+<p id="output_comment">
+<!--
+<p><img src="https://secure.gravatar.com/avatar/1a5e33c07da3f61716b593cbeb9fbdad.png?r=pg&s=240&d=https://www.kaggle.com/content/shared/img/default-avatar.png" width="20px"> Python, physical simulation of bubbles with viscous drag, colours sampled from image at left using k-means</p>
+-->
 </td>
 </tr>
 
@@ -173,24 +198,62 @@ var msnry = new Masonry( container, {
 </script>
 
  <table width=90%>
- 
- <tr>
+ <tr height=20></tr>
+ <tr valign="top">
  <td width=1%></td>
  
- <td width=43%>
+ <td width=24px valign="bottom">
+<img src='https://secure.gravatar.com/avatar/1a5e33c07da3f61716b593cbeb9fbdad.png?r=pg&s=240&d=https://www.kaggle.com/content/shared/img/default-avatar.png' width='20px'> 
+</td>
+<td>
 <input type="button" id="btn" value="pause" class="on" onclick="togglestyle(this)" />
 
 <input type="button" id="btn_how" value="how it works" class="on" onclick="togglestyle_how(this)" />
+
 </td>
 </tr></table>
 
-<!--
-	<div id='masonry' >
-	  <div class="item"><div ><img class='centeredImage' id="slide" width=90% /></div></div>
-	  
-	  <div class="item"><div ><img class='centeredImage' id="slide2" width=450px/></div></div>
-	</div>
--->
+
+
+
+<script type="text/javascript">
+
+//variable that will increment through the images
+var step=0
+
+function slideit(){
+ //if browser does not support the image object, exit.
+ if (!document.images)
+  return
+
+   
+  if (btn.value=='pause')
+ { 
+ document.getElementById('slide').src = slideimages[step].src
+ document.getElementById('slide2').src = slideimages2[step].src
+ document.getElementById('insp_comment').innerHTML = comment[step]
+ document.getElementById('output_comment').innerHTML = comment2[step] 
+ 
+ if (step<3) 
+  step++
+ else
+  step=0
+  
+ //call function "slideit()" every 5.0 seconds
+ setTimeout("slideit()",5000)  
+ } 
+
+}
+
+slideit()
+
+</script>
+
+
+
+
+
+
 
 <p>
 <div id="blah" style="display:visible;">
@@ -231,84 +294,63 @@ var msnry = new Masonry( container, {
 
 </table>
 
-<table width=90%> 
+
+
+<!--
+
+
+<table > 
 <tr height=40></tr>
-<tr height=40>
- <td width=3%></td>
- 
- <td width=43%>
 
- <i>This is beautiful! I want a skirt! ... I bet I could write some code....</i>
+<td width=3%></td>
+<td width=550>
 
-<!-- 
- <p>
- I love Hadieh Shafie's beautiful abstracts made of colourful cylinders of rolled-up paper. I also thought the concentric circle designs would make a fabulous skirt! There was just a little problem. When fabric is printed, the image doesn't cover the whole length of the cloth: the image is <i>tiled</i> to fill all the space. Unfortunately, this strategy means that the boundary between one tile and the next is rather obvious.
- <p>
- 
+
+<p><i>This is beautiful! I want a skirt! ... I bet I could write some code....</i>
+
+
+<p>I love Hadieh Shafie's beautiful abstracts made of colourful cylinders of rolled-up paper. The circle packings reminded me of images and computer models of soap bubbles made by former colleagues. And I thought that the concentric circle designs would make a fabulous skirt! There were just a few little problems.... First, the Bob Dylan school of copyright says that if you're going to steal, you'd better improve on the original. Second, the print image needed to be high-resolution. Finally, patterns printed on fabric look better if they repeat continuously.
+
+<p>Thanks to many researchers who study the properties of foams, granular materials and sphere packings, I knew how to build a circle packing by pretending that the circles are soap bubbles. The bubbles have a little kinetic energy, so they can wander around on the canvas. The bubbles also have the property that when they are squished against each other  they push each other apart. I built a simulation in which I slowly reduced the surface area of the canvas so that the bubbles were obliged to rearrange and pack more efficiently. 
+
+<table>
+<td width=250>
+<p>It's worth observing that Shafie's circle packings, which I expect are prepared by starting at the bottom of the frame and building up layer by layer, are <i>very dense</i>. When you look at the packings, most of the canvas is covered by the circles. In two dimensions, <i>random close packing</i> (the ratio of the area filled by the circles to the area of the canvas) is about 84%.
+</td>
+<td>
+<img src="shafie_packing_silhouette_single.jpg" width=300>
+</td>
+</table>
+
+<table>
+<td width=250>
+<p>When fabric is printed, the image doesn't cover the whole length of the cloth: the image is <i>tiled</i> to fill all the space. Unfortunately, this strategy means that the boundary between one tile and the next is rather obvious.</p>
+</td>
+<td>
+<img src="shafie_packing_silhouette.jpg" width=300>
+</td>
+</table>
 
 
 <table>
-
-
-<td width=300 valign="top">
-<tr>
-The solution to make a seamless repeating pattern is to use 'looping boundary conditions'. This means that a circle which disappears off the left side of the tile will reappear on the right side. 
-</tr>
+<td width=250>
+<p>The solution to make a seamless repeating pattern is to use 'looping boundary conditions'. This means that a circle which disappears off the left side of the tile will reappear on the right side.</p>
 </td>
 <td>
-<tr>
-<img src="packing_black_tiling.jpg" width=300>
-</tr>
+<img src="packing_16c_continuous.png" width=300>
 </td>
+</table>
+
+
+ 
+
+
 </tr></table>
-
-<p>
-I also knew that I could build a circle packing by pretending that the circles are soap bubbles. The bubbles have a little kinetic energy, so they can wander around on the canvas. And when the bubbles squish against each other, they push each other apart. I built a simulation in which I slowly reduced the surface area of the canvas so that the bubbles were obliged to rearrange and pack more efficiently. 
-<p>
-It's worth observing that Shafie's circle packings, which I expect are prepared by starting at the bottom of the frame and building up layer by layer, are <i>very dense</i>. When you look at the packings, most of the canvas is covered by the circles. In two dimensions, <i>random close packing</i> (the ratio of the area filled by the circles to the area of the canvas) is about 84\%
- 
-
---> 
-
-  </td>
- 
- <td width=45%></td></tr></table>
+-->
 
 </div>
 
 
-<script type="text/javascript">
-
-//variable that will increment through the images
-var step=0
-
-function slideit(){
- //if browser does not support the image object, exit.
- if (!document.images)
-  return
-
-   
-  if (btn.value=='pause')
- { 
- document.getElementById('slide').src = slideimages[step].src
- document.getElementById('slide2').src = slideimages2[step].src
-
- if (step<3) 
-  step++
- else
-  step=0
-  
- //call function "slideit()" every 5.0 seconds
- setTimeout("slideit()",5000)  
- } 
-
-
-
-}
-
-slideit()
-
-</script>
 
 
 <script type="text/javascript">
