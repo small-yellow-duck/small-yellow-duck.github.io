@@ -90,9 +90,15 @@ function togglestyle_how(el){
     if(el.className == "off") {
     	el.className="on";
     	el.value="how it works";
+    	document.getElementById('blah').style.display = 'none'
+    	
     } else {
     	el.className="off";
     	el.value="how it works";
+    	//window.location.href='#table_dest';
+    	document.getElementById('blah').style.display = ''
+    	document.getElementById('blah').scrollIntoView()
+    	
     }
 }
 </script>
@@ -156,20 +162,20 @@ document.getElementById('output_comment').innerHTML = comment2[step]
 
 
 
-
-
-
+<!--
+"width=90%;max-width:500px;max-height:500px;"
+-->
 
 
 <table width=100%>
 <tr >
 <td width=3%>
-<td style="width:45%;min-width:500px;" bgcolor="#AAAAAA" align="center">
-<img id="slide" style="width=90%;max-width:500px;max-height:500px;"/>
+<td style="width:43%;" bgcolor="#AAAAAA" align="center">
+<img id="slide" style="width=90%;max-width:480px;max-height:480px;"/>
 </td>	
 <td width = 8%></td>
 <td style="width:43%;" bgcolor="#AAAAAA" align="center">	  
-<img id="slide2" style="width=90%;max-width:500px;max-height:500px;"/>
+<img id="slide2" style="width=90%;max-width:480px;max-height:480px;"/>
 </td>
 </tr>
 <tr>
@@ -200,10 +206,10 @@ var msnry = new Masonry( container, {
  <table width=90%>
  <tr height=20></tr>
  <tr valign="top">
- <td width=1%></td>
+ <td width=3%></td>
  
  <td width=24px valign="bottom">
-<img src='https://secure.gravatar.com/avatar/1a5e33c07da3f61716b593cbeb9fbdad.png?r=pg&s=240&d=https://www.kaggle.com/content/shared/img/default-avatar.png' width='20px'> 
+<a href="http://small-yellow-duck.github.io/" border=0><img src='https://secure.gravatar.com/avatar/1a5e33c07da3f61716b593cbeb9fbdad.png?r=pg&s=240&d=https://www.kaggle.com/content/shared/img/default-avatar.png' width='22px'></a> 
 </td>
 <td>
 <input type="button" id="btn" value="pause" class="on" onclick="togglestyle(this)" />
@@ -256,7 +262,7 @@ slideit()
 
 
 <p>
-<div id="blah" style="display:visible;">
+<div id="blah" style="display:none;">
 
 
  <table>
@@ -293,6 +299,7 @@ slideit()
 
 
 </table>
+
 
 
 
@@ -348,33 +355,11 @@ slideit()
 </tr></table>
 -->
 
+
+
 </div>
 
 
-
-
-<script type="text/javascript">
-
-function toggle_how(){
- //if browser does not support the image object, exit.
- if (!document.images)
-  return
-  
-  if (btn_how.className=='off')
- { 
- document.getElementById('blah').style.display = ''
- } 
- else
- {
- document.getElementById('blah').style.display = 'none'
- }
-
-setTimeout("toggle_how()",50)
-}
-
-toggle_how()
-
-</script>
 
 
 </body>
