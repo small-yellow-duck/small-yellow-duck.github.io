@@ -108,14 +108,29 @@ function togglestyle_how(el){
 
 var slideimages = new Array() // create new array to preload images
 var comment = new Array()
+
+var slideimages2 = new Array()
+var comment2 = new Array()
+
 //src, preloading that image in the process
 slideimages[0] = new Image() // create new instance of image object
 slideimages[0].src = "starry_night.jpg" // set image object src property to an image's 
 comment[0] = "Starry Night (van Gogh)"
 
+//an image's src, preloading that image in the process
+slideimages2[0] = new Image() // create new instance of image object
+slideimages2[0].src = "starry_night_150c_v2pt4.png" // set image object src property to
+comment2[0] = "f(Starry Night)"
+
+
 slideimages[1] = new Image()
 slideimages[1].src = "suresh_infrared.jpg"
-comment[1] = "self portrait, mixed infrared and visible spectra (Suresh)"
+comment[1] = "Suresh's self portrait, mixed infrared and visible spectra"
+
+slideimages2[1] = new Image()
+slideimages2[1].src = "suresh_infrared_150c_v2pt4.png"
+comment2[1] = "f(Suresh in the infrared)"
+
 
 //slideimages[2] = new Image()
 //slideimages[2].src = "shafie005cropped.jpg"
@@ -123,31 +138,39 @@ slideimages[2] = new Image() // create new instance of image object
 slideimages[2].src = "kayaking_mamangua.jpg" // set image object src property to an image's 
 comment[2] = "Saco de Mamangua, Brazil"
 
-slideimages[3] = new Image() // create new instance of image object
-slideimages[3].src = "jericho_beach.jpg" // set image object src property to an image's 
-comment[3] = "Jericho Beach, Vancouver"
-
-var slideimages2 = new Array()
-var comment2 = new Array()
-//an image's src, preloading that image in the process
-slideimages2[0] = new Image() // create new instance of image object
-slideimages2[0].src = "starry_night_150c_v2pt4.png" // set image object src property to
-comment2[0] = "f(Starry Night)" 
-
-slideimages2[1] = new Image()
-slideimages2[1].src = "suresh_infrared_150c_v2pt4.png"
-comment2[1] = "f(Suresh in the infrared)" 
-
 //slideimages2[2] = new Image()
 //slideimages2[2].src = "shafie5_1000iter_5_colourbalanced2.png"
 slideimages2[2] = new Image() // create new instance of image object
 slideimages2[2].src = "kayaking_mamangua_150c_v2pt4.png"
 comment2[2] = "f(Saco de Mamangua)" 
 
+
+
+slideimages[3] = new Image() // create new instance of image object
+slideimages[3].src = "jericho_beach.jpg" // set image object src property to an image's 
+comment[3] = "Jericho Beach, Vancouver"
+
 slideimages2[3] = new Image() // create new instance of image object
 slideimages2[3].src = "jericho_sunset_150c_v2pt4.png" // set image object src property to 
 comment2[3] = "f(Jericho Beach)" 
 
+
+slideimages[4] = new Image() // create new instance of image object
+slideimages[4].src = "sudarad.jpg" // set image object src property to an image's 
+comment[4] = "Sudarad, Croatia"
+
+slideimages2[4] = new Image() // create new instance of image object
+slideimages2[4].src = "sudarad_150c_v2pt4.png" // set image object src property to 
+comment2[4] = "f(Sudarad)" 
+
+
+slideimages[5] = new Image() // create new instance of image object
+slideimages[5].src = "victoryboogiewoogie.jpg" // set image object src property to an image's 
+comment[5] = "Victory Boogie Woogie (Mondrian)"
+
+slideimages2[5] = new Image() // create new instance of image object
+slideimages2[5].src = "victoryboogiewoogie_150c_v2pt4.png" // set image object src property to 
+comment2[5] = "Take THAT, Mondrian!" 
 
 
 document.getElementById('slide').src = slideimages[step].src
@@ -216,6 +239,10 @@ var msnry = new Masonry( container, {
 
 <input type="button" id="btn_how" value="how it works" class="on" onclick="togglestyle_how(this)" />
 
+<input type="button" id="goto_app" value="app (upload your photo)" class="on" onclick="location.href='http://circadelic-design.appspot.com'" />
+
+<input type="button" id="goto_fabric" value="make a shirt" class="on" onclick="location.href='http://www.spoonflower.com/fabric/3716499'" />
+
 </td>
 </tr></table>
 
@@ -240,7 +267,7 @@ function slideit(){
  document.getElementById('insp_comment').innerHTML = comment[step]
  document.getElementById('output_comment').innerHTML = comment2[step] 
  
- if (step<3) 
+ if (step<5) 
   step++
  else
   step=0
