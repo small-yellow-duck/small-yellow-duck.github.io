@@ -172,6 +172,14 @@ slideimages2[5] = new Image() // create new instance of image object
 slideimages2[5].src = "victoryboogiewoogie_150c_v2pt4.png" // set image object src property to 
 comment2[5] = "Take THAT, Mondrian!" 
 
+slideimages[6] = new Image() // create new instance of image object
+slideimages[6].src = "baden_powell.jpg" // set image object src property to an image's 
+comment[6] = "North Shore Hike (Vancouver)"
+
+slideimages2[6] = new Image() // create new instance of image object
+slideimages2[6].src = "baden_powell_large.png" // set image object src property to 
+comment2[6] = "f(North Shore Hike)" 
+
 
 document.getElementById('slide').src = slideimages[step].src
 document.getElementById('slide2').src = slideimages2[step].src
@@ -267,7 +275,7 @@ function slideit(){
  document.getElementById('insp_comment').innerHTML = comment[step]
  document.getElementById('output_comment').innerHTML = comment2[step] 
  
- if (step<5) 
+ if (step<7) 
   step++
  else
   step=0
