@@ -8,11 +8,10 @@
 
 var slideimages = new Array() // create new array to preload images
 var comment = new Array()
+
 var slideimages2 = new Array()
 var comment2 = new Array()
 var label = new Array()
-
-var step = 0
 
 slideimages[0] = new Image() // create new instance of image object
 slideimages[0].src = "starry_night.jpg" // set image object src property to an image's 
@@ -91,30 +90,26 @@ document.getElementById('output_comment').innerHTML = comment2[step]
 document.getElementById('img_label').innerHTML = comment2[step]
 document.getElementById('preview_image').content = slideimages2[step].src
 
-</script>
 
-<script type="text/javascript">
-
-var pathArray = document.URL.split( '#' );
-
-if pathArray.length == 2
-{
-	for (var i = 0; i < label.length; i++) 
-	{
-	if (img_label[i] == pathArray[1])
-		{
-			document.getElementById('preview_image').content = "http://small-yellow-duck.github.io/circles/baden_powell_large.png"
-		}
-	}
-}	
+// var pathArray = document.URL.split( '#' );
+// 
+// if pathArray.length == 2
+// {
+// 	for (var i = 0; i < label.length; i++) 
+// 	{
+// 	if (img_label[i] == pathArray[1])
+// 		{
+// 			document.getElementById('preview_image').content = slideimages2[i].src;
+// 		}
+// 	}
+// }	
 </script>
 	
 
 	<meta id="preview_text" property="og:title" content="Circadelic Circle Packings" />
 	<meta property="og:description" content="Turn a photograph into a colourful circle packing." />
-	<meta property="og:image"  content="http://small-yellow-duck.github.io/circles/kayaking_sb_island_150c_v2pt4_9palettes.png" />
-	<meta property="og:url" content="http://small-yellow-duck.github.io/circles/index.html"
-
+	<meta id="preview_image" property="og:image"  content="kayaking_sb_island_150c_v2pt4_9palettes.png" />
+	<meta property="og:url" content="http://small-yellow-duck.github.io/circles/index.html">
 
 
 
@@ -232,10 +227,6 @@ function togglestyle_how(el){
 
 
 
-<!--
-"width=90%;max-width:500px;max-height:500px;"
--->
-
 <div>
 <p id="img_label" value='' style="display:none;">	
 </div>
@@ -298,7 +289,6 @@ var msnry = new Masonry( container, {
 
 </td>
 </tr></table>
-
 
 
 
