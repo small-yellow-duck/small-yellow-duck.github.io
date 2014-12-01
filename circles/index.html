@@ -3,8 +3,96 @@
       
 <head>
 	<title>Circadelic Circle Packings</title>
+
+<script type="text/javascript">
+
+var slideimages = new Array() // create new array to preload images
+var comment = new Array()
+
+var slideimages2 = new Array()
+var comment2 = new Array()
+var label = new Array()
+
+slideimages[0] = new Image() // create new instance of image object
+slideimages[0].src = "starry_night.jpg" // set image object src property to an image's 
+comment[0] = "Starry Night (van Gogh)"
+slideimages2[0] = new Image() // create new instance of image object
+slideimages2[0].src = "starry_night_150c_v2pt4.png" // set image object src property to
+comment2[0] = "f(Starry Night)"
+label[0] = 'starry_night'
+
+slideimages[1] = new Image()
+slideimages[1].src = "suresh_infrared.jpg"
+comment[1] = "Suresh's self portrait, mixed infrared and visible spectra"
+slideimages2[1] = new Image()
+slideimages2[1].src = "suresh_infrared_150c_v2pt4.png"
+comment2[1] = "f(Suresh in the infrared)"
+label[1] = 'infrared'
+
+slideimages[2] = new Image() // create new instance of image object
+slideimages[2].src = "kayaking_mamangua.jpg" 
+comment[2] = "Saco de Mamangua, Brazil"
+slideimages2[2] = new Image() // create new instance of image object
+slideimages2[2].src = "kayaking_mamangua_150c_v2pt4.png"
+comment2[2] = "f(Saco de Mamangua)" 
+label[2] = 'mamangua'
+
+slideimages[3] = new Image() // create new instance of image object
+slideimages[3].src = "jericho_beach.jpg" // set image object src property to an image's 
+comment[3] = "Jericho Beach, Vancouver"
+slideimages2[3] = new Image() // create new instance of image object
+slideimages2[3].src = "jericho_sunset_150c_v2pt4.png" // set image object src property to 
+comment2[3] = "f(Jericho Beach)" 
+label[3] = 'jericho_sunset'
+
+slideimages[4] = new Image() // create new instance of image object
+slideimages[4].src = "sudarad.jpg" // set image object src property to an image's 
+comment[4] = "Sudarad, Croatia"
+slideimages2[4] = new Image() // create new instance of image object
+slideimages2[4].src = "sudarad_150c_v2pt4.png" // set image object src property to 
+comment2[4] = "f(Sudarad)" 
+label[4] = 'sudarad'
+
+slideimages[5] = new Image() // create new instance of image object
+slideimages[5].src = "victoryboogiewoogie.jpg" 
+comment[5] = "Victory Boogie Woogie (Mondrian)"
+slideimages2[5] = new Image() // create new instance of image object
+slideimages2[5].src = "victoryboogiewoogie_150c_v2pt4.png" 
+comment2[5] = "Take THAT, Mondrian!" 
+label[5] = 'victory_boogie_woogie'
+
+slideimages[6] = new Image() // create new instance of image object
+slideimages[6].src = "baden_powell.jpg" // set image object src property to an image's 
+comment[6] = "North Shore Hike (Vancouver)"
+slideimages2[6] = new Image() // create new instance of image object
+slideimages2[6].src = "baden_powell_large.png" // set image object src property to 
+comment2[6] = "f(North Shore Hike)" 
+label[6] = 'baden_powell'
+
+slideimages[7] = new Image() // create new instance of image object
+slideimages[7].src = "kayaking_sb_islands.jpg" // set image object src property to an image's 
+comment[7] = "Santa Barbara Islands"
+slideimages2[7] = new Image() // create new instance of image object
+slideimages2[7].src = "kayaking_sb_island_150c_v2pt4_9palettes.png" 
+comment2[7] = "f(Santa Barbara Islands)" 
+label[7] = 'kayaking_sb'
+
+//slideimages[2] = new Image()
+//slideimages[2].src = "shafie005cropped.jpg"
+//slideimages2[2] = new Image()
+//slideimages2[2].src = "shafie5_1000iter_5_colourbalanced2.png"
+
+
+document.getElementById('slide').src = slideimages[step].src
+document.getElementById('slide2').src = slideimages2[step].src
+document.getElementById('insp_comment').innerHTML = comment[step]
+document.getElementById('output_comment').innerHTML = comment2[step]
+document.getElementById('img_label').innerHTML = comment2[step]
+document.getElementById('preview_image').content = slideimages2[step].src
+
+</script>
 	
-	<script>
+	<script type="text/javascript">
 	var pathArray = document.URL.split( '#' );
 	for (var i = 0; i < label.length; i++) 
 	{
@@ -13,7 +101,8 @@
 	</script>
 	
 	<meta id="preview_image" property="og:image" content="kayaking_sb_island_150c_v2pt4_9palettes.png" />
-	<meta id="preview_text" property="og:text" content="Circadelic Circle Packings" />
+	<meta id="preview_text" property="og:title" content="Circadelic Circle Packings" />
+	<meta property="og:description" content="Turn a photograph into a colourful circle packing." />
 
 	<style>
 	* {
@@ -121,93 +210,7 @@ function togglestyle_how(el){
 </script>
 
 
-<script type="text/javascript">
 
-var slideimages = new Array() // create new array to preload images
-var comment = new Array()
-
-var slideimages2 = new Array()
-var comment2 = new Array()
-var label = new Array()
-
-slideimages[0] = new Image() // create new instance of image object
-slideimages[0].src = "starry_night.jpg" // set image object src property to an image's 
-comment[0] = "Starry Night (van Gogh)"
-slideimages2[0] = new Image() // create new instance of image object
-slideimages2[0].src = "starry_night_150c_v2pt4.png" // set image object src property to
-comment2[0] = "f(Starry Night)"
-label[0] = 'starry_night'
-
-slideimages[1] = new Image()
-slideimages[1].src = "suresh_infrared.jpg"
-comment[1] = "Suresh's self portrait, mixed infrared and visible spectra"
-slideimages2[1] = new Image()
-slideimages2[1].src = "suresh_infrared_150c_v2pt4.png"
-comment2[1] = "f(Suresh in the infrared)"
-label[1] = 'infrared'
-
-slideimages[2] = new Image() // create new instance of image object
-slideimages[2].src = "kayaking_mamangua.jpg" 
-comment[2] = "Saco de Mamangua, Brazil"
-slideimages2[2] = new Image() // create new instance of image object
-slideimages2[2].src = "kayaking_mamangua_150c_v2pt4.png"
-comment2[2] = "f(Saco de Mamangua)" 
-label[2] = 'mamangua'
-
-slideimages[3] = new Image() // create new instance of image object
-slideimages[3].src = "jericho_beach.jpg" // set image object src property to an image's 
-comment[3] = "Jericho Beach, Vancouver"
-slideimages2[3] = new Image() // create new instance of image object
-slideimages2[3].src = "jericho_sunset_150c_v2pt4.png" // set image object src property to 
-comment2[3] = "f(Jericho Beach)" 
-label[3] = 'jericho_sunset'
-
-slideimages[4] = new Image() // create new instance of image object
-slideimages[4].src = "sudarad.jpg" // set image object src property to an image's 
-comment[4] = "Sudarad, Croatia"
-slideimages2[4] = new Image() // create new instance of image object
-slideimages2[4].src = "sudarad_150c_v2pt4.png" // set image object src property to 
-comment2[4] = "f(Sudarad)" 
-label[4] = 'sudarad'
-
-slideimages[5] = new Image() // create new instance of image object
-slideimages[5].src = "victoryboogiewoogie.jpg" 
-comment[5] = "Victory Boogie Woogie (Mondrian)"
-slideimages2[5] = new Image() // create new instance of image object
-slideimages2[5].src = "victoryboogiewoogie_150c_v2pt4.png" 
-comment2[5] = "Take THAT, Mondrian!" 
-label[5] = 'victory_boogie_woogie'
-
-slideimages[6] = new Image() // create new instance of image object
-slideimages[6].src = "baden_powell.jpg" // set image object src property to an image's 
-comment[6] = "North Shore Hike (Vancouver)"
-slideimages2[6] = new Image() // create new instance of image object
-slideimages2[6].src = "baden_powell_large.png" // set image object src property to 
-comment2[6] = "f(North Shore Hike)" 
-label[6] = 'baden_powell'
-
-slideimages[7] = new Image() // create new instance of image object
-slideimages[7].src = "kayaking_sb_islands.jpg" // set image object src property to an image's 
-comment[7] = "Santa Barbara Islands"
-slideimages2[7] = new Image() // create new instance of image object
-slideimages2[7].src = "kayaking_sb_island_150c_v2pt4_9palettes.png" 
-comment2[7] = "f(Santa Barbara Islands)" 
-label[7] = 'kayaking_sb'
-
-//slideimages[2] = new Image()
-//slideimages[2].src = "shafie005cropped.jpg"
-//slideimages2[2] = new Image()
-//slideimages2[2].src = "shafie5_1000iter_5_colourbalanced2.png"
-
-
-document.getElementById('slide').src = slideimages[step].src
-document.getElementById('slide2').src = slideimages2[step].src
-document.getElementById('insp_comment').innerHTML = comment[step]
-document.getElementById('output_comment').innerHTML = comment2[step]
-document.getElementById('img_label').innerHTML = comment2[step]
-document.getElementById('preview_image').content = slideimages2[step].src
-
-</script>
 	
 </head>
 <body>
