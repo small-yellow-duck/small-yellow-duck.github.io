@@ -4,8 +4,15 @@
 <head>
 	<title>Circadelic Circle Packings</title>
 	
+	<script>
+	var pathArray = document.URL.split( '#' );
+	for (var i = 0; i < label.length; i++) 
+	{
+	document.getElementById('preview_image').content = slideimages2[step].src;
+	}
+	</script>
 	
-	<meta id="preview_image" property="og:image" url="kayaking_sb_island_150c_v2pt4_9palettes.png" />
+	<meta id="preview_image" property="og:image" content="kayaking_sb_island_150c_v2pt4_9palettes.png" />
 	<meta id="preview_text" property="og:text" content="Circadelic Circle Packings" />
 
 	<style>
@@ -198,7 +205,7 @@ document.getElementById('slide2').src = slideimages2[step].src
 document.getElementById('insp_comment').innerHTML = comment[step]
 document.getElementById('output_comment').innerHTML = comment2[step]
 document.getElementById('img_label').innerHTML = comment2[step]
-document.getElementById('preview_image').url = slideimages2[step].src
+document.getElementById('preview_image').content = slideimages2[step].src
 
 </script>
 	
@@ -325,7 +332,7 @@ function slideit(){
  document.getElementById('insp_comment').innerHTML = comment[step]
  document.getElementById('output_comment').innerHTML = comment2[step] 
  document.getElementById('img_label').innerHTML = comment2[step] 
- document.getElementById('preview_image').url = slideimages2[step].src
+ document.getElementById('preview_image').content = slideimages2[step].src
  
  if (step<slideimages.length-1) 
   step++
@@ -341,7 +348,7 @@ function slideit(){
  document.getElementById('insp_comment').innerHTML = comment[step]
  document.getElementById('output_comment').innerHTML = comment2[step] 
  document.getElementById('img_label').innerHTML = document.URL
- document.getElementById('preview_image').url = slideimages2[step].src 
+ document.getElementById('preview_image').content = slideimages2[step].src 
  }   
 
  //call function "slideit()" every 5.0 seconds
