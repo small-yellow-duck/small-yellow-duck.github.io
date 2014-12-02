@@ -77,6 +77,16 @@ slideimages2[7].src = "kayaking_sb_island_150c_v2pt4_9palettes.png"
 comment2[7] = "f(Santa Barbara Islands)" 
 label[7] = 'kayaking_sb'
 
+
+slideimages[8] = new Image() // create new instance of image object
+slideimages[8].src = "alberta.jpg" // set image object src property to an image's 
+comment[8] = "Hay Bales, Alberta"
+slideimages2[8] = new Image() // create new instance of image object
+slideimages2[8].src = "alberta_200c_v2pt4_16palettes_wspatial.png" 
+comment2[8] = "f(Hay Bales)" 
+label[8] = 'hay_bales'
+
+
 //slideimages[2] = new Image()
 //slideimages[2].src = "shafie005cropped.jpg"
 //slideimages2[2] = new Image()
@@ -225,7 +235,14 @@ function togglestyle_how(el){
 <body>
 
 
-
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v2.0";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
 
 <div>
 <p id="img_label" value='' style="display:none;">	
@@ -254,11 +271,18 @@ function togglestyle_how(el){
 <!--
 <p><img src="https://secure.gravatar.com/avatar/1a5e33c07da3f61716b593cbeb9fbdad.png?r=pg&s=240&d=https://www.kaggle.com/content/shared/img/default-avatar.png" width="20px"> Python, physical simulation of bubbles with viscous drag, colours sampled from image at left using k-means</p>
 -->
+
+
 </td>
+
+
 </tr>
 
 </table>	
 	
+
+
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
 
 	
 <script src='masonry.pkgd.min.js'></script>
@@ -270,7 +294,7 @@ var msnry = new Masonry( container, {
 });
 </script>
 
- <table width=90%>
+ <table width=100%>
  <tr height=20></tr>
  <tr valign="top">
  <td width=3%></td>
@@ -286,10 +310,27 @@ var msnry = new Masonry( container, {
 <input type="button" id="goto_app" value="app (upload your photo)" class="on" onclick="location.href='http://circadelic-design.appspot.com'" />
 
 <input type="button" id="goto_fabric" value="make a shirt" class="on" onclick="location.href='http://www.spoonflower.com/fabric/3716499'" />
-
 </td>
-</tr></table>
 
+<td align="right">
+
+
+<a href="https://twitter.com/share" class="twitter-share-button" data-url="http://small-yellow-duck.github.io/circles/index.html" data-text="create a colourful circle packing from a photograph" data-via="dr_fivecents" data-count="none">Tweet</a>
+</td>
+</tr>
+
+</table>
+
+<div class="fb-share-button" data-href="http://small-yellow-duck.github.io/circles/index.html" data-layout="button"></div>
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v2.0";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
 
 
 <script type="text/javascript">
