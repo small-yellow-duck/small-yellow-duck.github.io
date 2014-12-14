@@ -79,15 +79,6 @@ label[i] = 'baden_powell'
 
 i = i + 1
 slideimages[i] = new Image() // create new instance of image object
-slideimages[i].src = "apothekersdijk.jpg" // set image object src property to an image's 
-comment[i] = "Apothekersdijk (Leiden)"
-slideimages2[i] = new Image() // create new instance of image object
-slideimages2[i].src = "apothekersdijk_200c_v2pt4_36palettes.png" // set image object src property to 
-comment2[i] = "f(Apothekersdijk)" 
-label[i] = 'apothekersdijk'
-
-i = i + 1
-slideimages[i] = new Image() // create new instance of image object
 slideimages[i].src = "tulips4.jpg" // set image object src property to an image's 
 comment[i] = "Keukenhof IV"
 slideimages2[i] = new Image() // create new instance of image object
@@ -191,7 +182,7 @@ document.getElementById('preview_image').content = slideimages2[step].src
     
     p {
     font-family: "Arial", Arial, sans-serif;
-    font-size: 88%;
+    font-size: 100%;
 	} 
 
 	</style>
@@ -268,6 +259,7 @@ function togglestyle_how(el){
 
 	
 </head>
+
 <body>
 
 
@@ -285,34 +277,22 @@ function togglestyle_how(el){
 </div>
 
 
-<table width=100%>
+<table height=90% width=100%>
 <tr >
-<td width=3%>
-<td style="width:43%;min-width:500px;" bgcolor="#AAAAAA" align="center">
-<img id="slide" style="width=90%;max-width:480px;max-height:480px;"/>
-</td>	
-<td width = 8%></td>
-<td style="width:43%;min-width:500px;" bgcolor="#AAAAAA" align="center">	  
-<img id="slide2" style="width=90%;max-width:480px;max-height:480px;"/>
-</td>
-</tr>
-<tr>
-<td width=3%>
-<td width=43% bgcolor="#FFFFFF" align="left" valign="top">
-<p id="insp_comment">
-</td>	
-<td width = 4%></td>
-<td width=45% bgcolor="#FFFFFF" align="left" valign="top">	  
-<p id="output_comment">
-<!--
-<p><img src="https://secure.gravatar.com/avatar/1a5e33c07da3f61716b593cbeb9fbdad.png?r=pg&s=240&d=https://www.kaggle.com/content/shared/img/default-avatar.png" width="20px"> Python, physical simulation of bubbles with viscous drag, colours sampled from image at left using k-means</p>
--->
-
+<td align='center' >
+	  
+<img src='circle_shirt.jpg' style="max-height:700px;"/>
 
 </td>
+</tr>
 
+<tr valign='top'>
+<td align='center'>
+<p>"Mamangua" men's shirt [<a href="http://www.spoonflower.com/fabric/3716499">buy fabric</a>]</p>
+</td>
 
 </tr>
+
 
 </table>	
 	
@@ -339,19 +319,17 @@ var msnry = new Masonry( container, {
 <a href="http://small-yellow-duck.github.io/" border=0><img src='https://secure.gravatar.com/avatar/1a5e33c07da3f61716b593cbeb9fbdad.png?r=pg&s=240&d=https://www.kaggle.com/content/shared/img/default-avatar.png' width='22px'></a> 
 </td>
 <td>
-<input type="button" id="btn" value="pause" class="on" onclick="togglestyle(this)" />
+<input type="button"  style="font-size:88%" id="btn_how" value="back to gallery" class="on" onclick="location.href='index.html'" />
 
-<input type="button" id="btn_how" value="how it works" class="on" onclick="togglestyle_how(this)" />
+<input type="button" style="font-size:88%" id="goto_app" value="app (upload your photo)" class="on" onclick="location.href='http://circadelic-design.appspot.com'" />
 
-<input type="button" id="goto_app" value="app (upload your photo)" class="on" onclick="location.href='http://circadelic-design.appspot.com'" />
 
-<input type="button" id="goto_fabric" value="make a shirt" class="on" onclick="location.href='shirt.html'" />
 </td>
 
 <td align="right">
 <div class="fb-share-button" data-href="http://small-yellow-duck.github.io/circles/index.html" data-layout="button"></div>
 
-<a href="https://twitter.com/share" class="twitter-share-button" data-url="http://small-yellow-duck.github.io/circles/index.html" data-text="create a colourful circle packing from a photograph" data-via="dr_fivecents" data-count="none">Tweet</a>
+<a href="https://twitter.com/share" style="font-size:100%" class="twitter-share-button" data-url="http://small-yellow-duck.github.io/circles/index.html" data-text="create a colourful circle packing from a photograph" data-via="dr_fivecents" data-count="none">Tweet</a>
 </td>
 </tr>
 
@@ -369,80 +347,7 @@ var msnry = new Masonry( container, {
 }(document, 'script', 'facebook-jssdk'));</script>
 
 
-<script type="text/javascript">
 
-//variable that will increment through the images
-var step=0
-
-function slideit(){
- //if browser does not support the image object, exit.
- if (!document.images)
-  return
-
-  var pathArray = document.URL.split( '#' );
-  
-  if (pathArray.length > 1)
-  {
-  step = -1
-  
-  for (var i = 0; i < label.length; i++) 
-  {
-    if (label[i] == pathArray[1])
-    {
-       step = i
-       document.getElementById('btn').className = 'off'
-       document.getElementById('btn').value = 'play'
-       break
-     }  
-   }
-
-    if (step == -1)
-   {
-     document.location.href = pathArray[0]
-     step = 0
-    } 
-    
-  }
-  
-  
-   
-
-    
-  if (btn.value=='pause')
- {
- 
- document.getElementById('slide').src = slideimages[step].src
- document.getElementById('slide2').src = slideimages2[step].src
- document.getElementById('insp_comment').innerHTML = comment[step]
- document.getElementById('output_comment').innerHTML = comment2[step] 
- document.getElementById('img_label').innerHTML = comment2[step] 
- document.getElementById('preview_image').content = slideimages2[step].src
- 
- if (step<slideimages.length-1) 
-  step++
- else
-  step=0
- } 
- 
-  if (btn.value=='play' && document.getElementById('slide').src=='')
- {
-
- document.getElementById('slide').src = slideimages[step].src
- document.getElementById('slide2').src = slideimages2[step].src
- document.getElementById('insp_comment').innerHTML = comment[step]
- document.getElementById('output_comment').innerHTML = comment2[step] 
- document.getElementById('img_label').innerHTML = document.URL
- document.getElementById('preview_image').content = slideimages2[step].src 
- }   
-
- //call function "slideit()" every 5.0 seconds
- setTimeout("slideit()",5000)  
-
-}
-
-slideit()
-
-</script>
 
 
 
@@ -454,40 +359,6 @@ slideit()
 <div id="blah" style="display:none;">
 
 
- <table>
-
-<td width = 3%></td>
-<td width=300>
-
-<a href="http://dutw1479.wbmt.tudelft.nl/~btighe/research.html"><img src="http://dutw1479.wbmt.tudelft.nl/~btighe/images/foam_demo.gif" width= 300></a>
-<p>physics simulation of soap bubbles (these are real bubbles in <a href="http://www.research.ed.ac.uk/portal/en/persons/gijs-katgert%2858b39da5-7378-408f-842a-ddfeaf3508e7%29.html">Gijs's experiment</a>).
-</td>
-<td><h2>+</h2></td>
-<td width=300>
-<table>
-<tr>
-<img src="tulips1.jpg" width= 300>
-</tr>
-<tr>
-<img src="tulips1_palette.png" width= 300>
-</tr>
-</table>
-<p>the colour palette for a photograph constructed using a cluster-finding algorithm called k-means
-</td>
-
-<td><h2>=</h2></td>
-
-<td width=300>
-<!-- img src="shafie5_1000iter_5_colourbalanced2.png" width= 300 -->
-<img src="tulips1_150c_v2pt4.png" width=300>
-<p>ART
-</td>
-
-</td>
-
-
-
-</table>
 
 
 
