@@ -1,0 +1,361 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!--
+Design by Free CSS Templates
+http://www.freecsstemplates.org
+Released for free under a Creative Commons Attribution 2.5 License
+
+Name       : SquareAway 
+Description: A four-column, fixed-width design with dark color scheme.
+Version    : 1.0
+Released   : 20130804
+
+-->
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>SquareAway</title>
+<meta name="keywords" content="" />
+<meta name="description" content="" />
+<link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900|Open+Sans:400,300,600,700,800" rel="stylesheet" />
+<link href="default.css" rel="stylesheet" type="text/css" media="all" />
+<link href="fonts.css" rel="stylesheet" type="text/css" media="all" />
+
+<!--[if IE 6]><link href="default_ie6.css" rel="stylesheet" type="text/css" /><![endif]-->
+
+</head>
+<body>
+<div id="logo" class="container">
+	<h1><a href="#" class="icon icon-spinner"><span>big data? small yellow duck</span></a></h1>
+</div>
+<div id="header">
+	<div id="menu" class="container">
+		<ul>
+			<li class="current_page_item"><a href="index.html" accesskey="1" title="">Homepage</a></li>
+			<li><a href="about.html" accesskey="1" title="">About</a></li>
+
+		</ul>
+	</div>
+</div>
+
+
+<div id="page-wrapper">
+	<div id="banner" class="container"><a href="#"><img src="images/skyline.jpg" width="1200" height="300" alt="" /></a></div>
+
+	
+	<div id="featured" class="container">
+		<div class="box">
+			<div class="title">
+				<h2>Identifying bots in an online auction</h2>
+			</div>
+			<p>
+			<hr width=900 align=left>
+			<table><tr width=900>
+			Is a bidder in an online auction a bot or a human?
+			</tr></table>
+			
+			<hr width=900 align=left>
+			
+			<p>
+
+			<table><tr width=900>
+			<td width = 900 valign=top>
+			<font style="line-height:2.0"> 
+			<p>The data consists of a list of bid events (auction id, user id, time, IP, location) and 
+			a table, <tt>X</tt>, with the bidder id's, the hashed contact and payment addresses and whether the bidder 
+			is a robot or a human.
+			<p>The interesting part of this problem is to find ways to characterize bidding behaviour - to
+			generate features that can be inserted into <tt>X</tt>. Then <tt>X</tt> can be used to
+			train a classification algorithm to distinguish between bots and humans.
+			
+			</td></tr></table>			
+		</div>
+	</div>			
+
+	<div id="featured" class="container">
+		<div class="box">	
+			<div class="title">
+				<h2>A quick look at the data</h2>
+			</div>
+			
+			<table>
+			
+			<tr>
+			<td  valign=top width=350> <font style="line-height:2.0"> 
+			<b><ul>A sample auction</ul></b> Examining the bidding activity in one auction suggested a few useful features
+			right off the bat. I was a little unlucky with first auction I picked: one bidder made about 800 bids and completely
+			dominated the auction. Must be a bot, eh? So the mean number of bids per auction, <tt>bids_per_auction_mean</tt> is 
+			probably instructive. What about the time between a user's bid and the previous bid in a given auction? 
+			(<tt>dt_others_median</tt>). How rapidly does the user place subsequent bids (in the same auction or a different
+			auction)? (<tt>dt_self_median</tt>). How rapidly does a user switch between IPs (in the same auction or a different
+			auction)? (<tt>dt_change_ip_median</tt>)
+			
+			<p><p>Another useful observation is that users which place bids from multiple countries often only place bids from
+			one country in a given auction - this suggests that multiple people may be placing bids from the same account, but
+			that only one individual on the account usually follows any one auction.
+			
+			</td>
+			<td valign=top width = 550>
+			<img src="facebook_auction/bids_sample_auction2.png" width = 550>
+			</td>
+			</tr>
+			</table>	
+	
+	
+	
+	
+			<div class="title">
+				<h2>Time information</h2>
+			</div>
+			
+			<table>
+			
+			<tr>
+			<td  valign=top width=900> <font style="line-height:2.0"> 
+			<p><p><b><ul>Bidding action over time</ul></b>Since the time axis had mystery units it was first
+			useful to map the time values to something in hours. I expected that bidding activity would 
+			probably have a periodicity of a day, so I made a histogram of bids over time. Surprise! 
+			Instead of having one continuous chunk of bidding action, there are three chunks.  
+
+			</td>
+			</tr>
+			</table>
+			
+			<table>
+			<tr>
+			<td valign=top width = 450>
+			<img src="facebook_auction/bids_over_time.png" width = 450>
+			</td>
+			<td valign=top width = 450>
+			<img src="facebook_auction/bids_over_time_zoom.png" width = 450>
+			</td>
+			</tr>
+			</table>
+			
+			<table>
+			<tr valign=top width=900>
+			<td  valign=top width=900> <font style="line-height:2.0"> 
+			<p><p>In the bids/unit time histogram, each of the three chunks contains about three periods worth of
+			bidding activity, which suggests that each chunk of data is probably three days. The durations 
+			of each chunk are the same (+/- 1 mystery unit) and the durations of the gaps between each chunk are also the same, which
+			suddenly made it very easy to calculate the length of a day. The duration of the
+			entire data set is 31 times <tt>one_day</tt>. Had the data chunks not all been so suggestively
+			the same duration, the positions of peaks in the <a href="http://en.wikipedia.org/wiki/Autocorrelation">
+			autocorrelation function</a> of the bid histogram could have been used to calculate the length of a day.
+
+			<b><ul>Characterizing the distribution of times at which users place bids</ul></b>
+			Both the histograms of bids over time for all the auctions and bids over time for single auctions
+			exhibited a periodicity of one day - and this periodicity was more obvious for human bidders than
+			for bots. (This is to be expected as humans sleep.) There was also a daily spike in human bidding activity, 
+			which was puzzling (did all auctions
+			end at midnight GMT? Was this just the busiest time of day for bidders in Asia?) Nevertheless, the variation in the number of bids as a function of 
+			the time of day was a feature that could be exploited using a simple histogram. What fraction of a user's bids
+			were placed in the first 30 minutes of the day? The second 30 minutes? A second measure is the ratio between
+			the number of bids placed in the first/second/n 30 minutes of the day and the number of bids in the 30 minute segment 
+			in which the most bids were placed. Both these measures gave similar improvements to the
+			classification (see below for comments on cross-validation). 
+			
+			<p><p>It would be reasonable to expect to need to shift the bids/time histogram along the time axis depending on what
+			time zone the bidder was in. This is tricky though, since IP is not a reliable indicator of location. And the
+			daily spike in human bidding activity suggested that shifting the bids/time histogram might not actually be
+			very instructive.
+			
+			<b><ul>Auction length</ul></b>
+			Some of the auctions only had bidding activity in one of the three-day chunks, while other auctions included
+			bidding activity in two of the chunks - ie, some of the auctions lasted at least 17 days. It turned out that the
+			durations of auctions which the bidder participated in was slightly helpful in labeling bots. What fraction of
+			the auctions the user participated in were longer than two weeks? What was the median time between the user's  
+			bids and the start of the auction? The median time between a user's bids and the end of an auction?
+			</td>
+			</tr>
+			</table>
+			
+			<table>
+			<tr>
+			<td valign=top align=left width=450><font style="line-height:2.0"> 
+			<p><b><ul>Bidding strategy over the course of an auction</ul></b>
+			Because the data is in three chunks, it's impossible to tell if there are any complete auctions - if the 
+			first bid in the data set is sufficiently far from <tt>t_start</tt>, then it's reasonable to assume that this was the first bid in 
+			the auction (ditto for the last bid, where the last bid falls reasonable far from the end of the data set). I would have liked to have created a description of the bidding strategy which included where in the
+			auction a user was bidding - did the user bid only at the last minute? Or only in the beginning of an 
+			auction? These behaviours correspond to two different bot strategies: the first bot exists to drive up the
+			price, while the second bot is designed to rapidly make a lot of bids to finish the auction. However, there
+			were no clues in the bidding data to suggest that any of the auctions were complete.
+			</td>
+			<td valign=top align=left width=450>
+			<figure>
+			<img src="facebook_auction/bids_over_course_of_auction.png" width=450 >
+			<figcaption width=450></figcaption></figure>
+			</td>	
+			</tr>			
+
+			</table>			
+			
+			<p>
+			<div class="title">
+				<h2>Using entropy to characterize variety in weekday, IP, referring URL</h2>
+			</div>
+	
+			<table>
+			<tr>
+			<td valign=top width = 900><font style="line-height:2.0"> 
+			There is only bidding information for three day of each of the three weeks in the data - let's call these days
+			Monday, Tuesday and Wednesday. One way to characterize the difference between the number of bids on each day
+			is the entropy <tt>N!/(N_<sub>Mon</sub>!N_<sub>Tue</sub>!N_<sub>Wed</sub>)</tt>. <tt>N</tt> is the total number
+			of bids made by a given user and <tt>N<sub>i</sub></tt> is the total number of bids made by that user on
+			weekday <tt>i</tt>. Because the entropy is very large, it is smarter to calculate the log of the entropy. 
+			
+			<p><p>Entropy also turned out to be a useful way to characterize how a user's bidding activity is distributed
+			over different IPs and referring URLs.
+			
+			</td>
+			</tr>
+			</table>			
+			
+			
+			
+
+			
+			
+			<div class="title">
+				<h2>Other useful features</h2>
+			</div>	
+			<table><tr>
+			<td valign=top align=left width=900><font style="line-height:2.0">
+			The model got additional mileage out of the fraction of bids a user place in
+			each of the 199 countries, as well as the fraction of IPs from which a user
+			placed a bid from which another user who was a bot also placed a bid.
+			</td>
+			</tr>
+			</table>			
+			</div>
+	</div>
+				
+	
+	<div id="featured" class="container">
+		<div class="box">	
+			<div class="title">
+				<h2>Classification</h2>
+			</div>			
+			<table><tr width=460>
+			<td valign=top align=left width=450>
+			<figure>
+			<img src="facebook_auction/hist_cv_scores.png" width=450 >
+			<figcaption width=450></figcaption></figure>
+			</td>			
+			<td width = 440 valign=top>
+			<font style="line-height:2.0">
+			<b><ul>Choosing the algorithm</ul></b>
+			Since this is a classification problem scored by the AUC, the classification algorithm
+			should generate the probabilities for each class. The options include <tt>RandomForestClassifier</tt>, 
+			<tt>AdaBoostClassifier</tt>, <tt>GradientBoostingClassifier</tt>, <tt>ExtraTreesClassifier</tt>. scikit-learn
+			makes it easy just to try them all. Breaking the training set into a training and validation set and comparing
+			the AUC predictions from each classifier made it clear <tt>RandomForestClassifier</tt> with 
+			<tt>criterion='entropy'</tt> is the best option.
+		
+			<pp>The final submissions were created by averaging five predictions from <tt>RandomForestClassifier</tt>.
+			</td>
+			</tr>
+			</table>
+			
+			<table>
+			<tr>
+			<td width=900 valign=top><font style="line-height:2.0">
+			<b><ul>Assessing the quality of predictions</ul></b>
+			There was a lot of variation in the data set, so quantifying the performance of the classifier was difficult.
+			I used 100 splits (80%-train, 20%-validation) to cross-validate the predictions and then examined the 10th
+			percentile and 25th percentile score. Ultimately, this was helpful up until the last 0.003 or so.
+			
+			</td>
+			</tr>			
+			</table>
+		</div>
+	</div>
+	
+	<div id="featured" class="container">
+		<div class="box">	
+					
+			<div class="title">
+				<h2>Things I tried that didn't work</h2>
+			</div>	
+					
+			<table>
+			<td valign=top align=left width=450><font style="line-height:2.0">	
+			<b><ul>Weekly bidder entropy</b></ul>
+			In the training data, a larger fraction of bids by humans takes place in the first data chunk (week0) 
+			than in the third data chunk (week4). Originally, I tried to exploit this as a feature, but eventually I decided
+			that this distribution was more likely a result of how the data had been partitioned into the training
+			and test data sets. When I dropped the week from my model, my leaderboard score went up.
+			
+			<td valign=top width = 450>
+			<img src="facebook_auction/bids_over_time.png" width = 450>
+			</td>
+			</tr>
+			</table>
+			
+			<table>
+			<tr>
+			<td valign=top align=left width=450><font style="line-height:2.0">		
+			<b><ul>Using a cluster algorithm to group users which use similar sets of IPs</b></ul>
+			I used <tt>MiniBatchKMeans</tt> to cluster users according to the fraction of bids they placed on IPs that
+			occur more than twice. I was hoping to identify users with multiple accounts. Clustering was computationally
+			expensive and didn't add anything measurable when tested using cross-validation.
+			
+			<b><ul>Feature-weighted linear stacking</b></ul>
+			Using <a href="http://arxiv.org/pdf/0911.0460.pdf">feature-weighted linear stacking</a> to blend the results of several 
+			different models didn't produce results any better than <tt>RandomForestClassifier</tt>. In FWLS, the training data
+			is broken into several folds and predictions for different models are generated for each fold. FWLS probably
+			did not work very well because 
+			variation between the scores for predictions of a single model on different folds is quite large and 
+			because <tt>RandomForestClassifier</tt> exploited slightly different features every time the model was fitted on
+			a different fold.
+ 		
+			<b><ul>Using <tt>payment_account</tt> and <tt>address</tt> data</ul></b>
+			Again, I was hoping to exploit users who were placing bids with multiple accounts. Let's take a look at the 
+			first few lines of train.csv - the file which contains bidder info, along with the outcome
+			(whether the bidder is a human or a robot).			
+			</td>
+			</tr>
+			
+			<tr>
+			<td>
+			<table cellspacing="3">
+			<font style="Courier New">
+<tr><td >bidder_id </td><td> payment_account </td><td>address </td><td>outcome</td></tr>
+<tr><td >91a3c57b13234af24875c56fb7e2b2f4rb56a</td><td>a3d2de7675556553a5f08e4c88d2c228754av</td><td>a3d2de7675556553a5f08e4c88d2c228vt0u4 </td><td>0.0 </td></tr>
+<tr><td >624f258b49e77713fc34034560f93fb3hu3jo</td><td>a3d2de7675556553a5f08e4c88d2c228v1sga</td><td>ae87054e5a97a8f840a3991d12611fdcrfbq3 </td><td>0.0 </td></tr>
+<tr><td >1c5f4fc669099bfbfac515cd26997bd12ruaj</td><td>a3d2de7675556553a5f08e4c88d2c2280cybl</td><td>92520288b50f03907041887884ba49c0cl0pd </td><td>0.0 </td></tr>
+<tr><td >4bee9aba2abda51bf43d639013d6efe12iycd</td><td>51d80e233f7b6a7dfdee484a3c120f3b2ita8</td><td>4cb9717c8ad7e88a9a284989dd79b98dbevyi</td><td>0.0</td></tr>
+<tr><td >4ab12bc61c82ddd9c2d65e60555808acqgos1</td><td>a3d2de7675556553a5f08e4c88d2c22857ddh</td><td>2a96c3ce94b3be921e0296097b88b56a7x1ji</td><td>0.0</td></tr>
+<tr><td >7eaefc97fbf6af12e930528151f86eb91bafh</td><td>a3d2de7675556553a5f08e4c88d2c228yory1</td><td>5a1d8f28bc31aa6d72bef2d8fbf48b967hra3</td><td>0.0</td></tr>
+<tr><td >25558d24bca82beef0f9db4ba1fe2045ynnvq</td><td>81580585d4dedd473da11aabf37fe9d4e2s2n</td><td>9a6d81115b9b653ba326eb510e9163b47drqj</td><td>0.0</td></tr>
+<tr><td >88ae7a35e374a6fddd079ebb28c822eeohwse</td><td>a3d2de7675556553a5f08e4c88d2c2289zref</td><td>3a7e6a32b24aeab0688e91a41f3188e22iuec</td><td>0.0</td></tr>			
+			</font>
+			</table>
+			</td>
+			</tr>
+			
+			
+			<tr width=900 >
+			<td width=900 valign=top><font style="line-height:2.0"> 
+			Many of these account names have been hashed to something that starts with "a3d2de7675556553a5f08e4c88d2c228". I stripped off the last
+			five elements of the <tt>payment_account</tt> and <tt>address</tt> hashes and looked for duplicates. Using a pivot table
+			with info about repeated values of <tt>address[0:-5]</tt> and <tt>payment_account[0:-5]</tt> didn't improve CV score.
+			</td>
+			</tr>
+			</table>
+				
+		</div>
+		
+	</div>
+
+
+
+</div>
+
+
+
+<div id="copyright">
+	<p>Copyright (c) 2013 small yellow duck. All rights reserved. Design by <a href="http://www.freecsstemplates.org/" rel="nofollow">FreeCSSTemplates.org</a>.</p>
+</div>
+</body>
+</html>
