@@ -66,6 +66,12 @@ Released   : 20130804
 			<p>The interesting part of this problem is to find ways to characterize bidding behaviour - to
 			generate features that can be inserted into <tt>X</tt>. Then <tt>X</tt> can be used to
 			train a classification algorithm to distinguish between bots and humans.
+			<p>The most useful features I identified were: the median time between a user's bid and that user's previous bid,
+			the mean number of bids a user made per auction, the entropy for how many bids a user placed on each day of the
+			week, the maximum number of bids in a 20 min span, the total number of bids placed by the user, the average
+			number of bids a user placed per referring URL, the number of bids placed by the user on each of the three
+			weekdays in the data, and the minimum and median times between a user's bid and the previous bid by another
+			user in the same auction.
 			
 			</td></tr></table>			
 		</div>
