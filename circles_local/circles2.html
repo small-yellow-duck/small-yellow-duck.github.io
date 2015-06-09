@@ -1,0 +1,344 @@
+<html>
+<head>
+	<title>Masonry Layout with Mazonry Plugin</title>
+	
+
+	<style>
+	* {
+	  -webkit-box-sizing: border-box;
+	     -moz-box-sizing: border-box;
+		  box-sizing: border-box;
+	}
+
+	.item {
+	  width:  500px;
+	  height: 500px;
+	  float: center;
+	  background: #AAAAAA;
+	  border: 5px solid #333;
+	}
+
+	.item.thumbnail { width:  240px;height: 60px; background:#cfcfcf }
+	.item.medium { width:  240px;height: 180px; background: #A6E392}
+	.item.large { width:  490px;height: 360px; background: #111111}
+	.item.filler { width:  40px;height: 500px; background: #000000 border: 0px}
+	
+  .centeredImage
+    {
+    text-align:center;
+    display:block;
+    position:absolute;
+    top: 50%;         
+    left: 50%;
+  	transform: translate(-50%, -50%)
+    }
+    
+    p {
+    font-family: "Arial", Arial, sans-serif;
+    font-size: 88%;
+	} 
+
+	</style>
+
+
+<style type="text/css">
+.on { 
+border:1px outset;
+color:#369;
+background:#efefef; 
+}
+
+.off {
+border:1px outset;
+color:#369;
+background:#f9d543; 
+}
+
+.rotate90 {
+    -webkit-transform: rotate(90deg);
+    -moz-transform: rotate(90deg);
+    -o-transform: rotate(90deg);
+    -ms-transform: rotate(90deg);
+    transform: rotate(90deg);
+}
+
+
+
+</style>
+
+<script language="javascript">
+function togglestyle(el){
+    if(el.className == "on") {
+    	el.className="off";
+    	el.value="play";
+    } else {
+    	el.className="on";
+    	el.value="pause";
+    }
+}
+</script>
+
+<script language="javascript">
+function togglestyle_how(el){
+    if(el.className == "off") {
+    	el.className="on";
+    	el.value="how it works";
+    } else {
+    	el.className="off";
+    	el.value="how it works";
+    }
+}
+</script>
+
+
+<script type="text/javascript">
+
+var slideimages = new Array() // create new array to preload images
+//src, preloading that image in the process
+slideimages[0] = new Image() // create new instance of image object
+slideimages[0].src = "starry_night.jpg" // set image object src property to an image's 
+slideimages[1] = new Image()
+slideimages[1].src = "jericho_sunset2.jpg"
+//slideimages[2] = new Image()
+//slideimages[2].src = "shafie005cropped.jpg"
+slideimages[3] = new Image() // create new instance of image object
+slideimages[3].src = "jericho_beach.jpg" // set image object src property to an image's 
+slideimages[2] = new Image() // create new instance of image object
+slideimages[2].src = "kayaking_mamangua.jpg" // set image object src property to an image's 
+
+
+var slideimages2 = new Array()
+//an image's src, preloading that image in the process
+slideimages2[0] = new Image() // create new instance of image object
+slideimages2[0].src = "starry_night_150c_v2pt4.png" // set image object src property to 
+slideimages2[1] = new Image()
+slideimages2[1].src = "jericho_sunset2_150c_v2pt4.png"
+//slideimages2[2] = new Image()
+//slideimages2[2].src = "shafie5_1000iter_5_colourbalanced2.png"
+slideimages2[3] = new Image() // create new instance of image object
+slideimages2[3].src = "jericho_sunset_150c_v2pt4.png" // set image object src property to 
+slideimages2[2] = new Image() // create new instance of image object
+slideimages2[2].src = "kayaking_mamangua_150c_v2pt4.png" // set image object src property to 
+
+
+
+document.getElementById('slide').src = slideimages[step].src
+document.getElementById('slide2').src = slideimages2[step].src
+
+</script>
+	
+</head>
+<body>
+
+
+
+
+
+
+
+
+
+<table width=100%>
+<tr height="500px">
+<td width=3%>
+<td width=45% bgcolor="#AAAAAA" align="center">
+<img id="slide" width=90% />
+</td>	
+<td width = 8%></td>
+<td width=43% bgcolor="#AAAAAA" align="center">	  
+<img id="slide2" width=90%/>
+</td>
+</tr>
+<tr>
+<td width=3%>
+<td width=43% bgcolor="#FFFFFF" align="left" valign="top">
+<p>Inspiration</p>
+</td>	
+<td width = 4%></td>
+<td width=45% bgcolor="#FFFFFF" align="left" valign="top">	  
+<p><img src="https://secure.gravatar.com/avatar/1a5e33c07da3f61716b593cbeb9fbdad.png?r=pg&s=240&d=https://www.kaggle.com/content/shared/img/default-avatar.png" width="20px">
+Python, physical simulation of bubbles with viscous drag, colours sampled from image at left using k-means</p>
+</td>
+</tr>
+
+</table>	
+	
+<script src='masonry.pkgd.min.js'></script>
+<script>
+var container = document.querySelector('#masonry');
+var msnry = new Masonry( container, {
+  columnWidth: 50,
+  itemSelector: '.item'
+});
+</script>
+
+ <table width=90%>
+ 
+ <tr>
+ <td width=1%></td>
+ 
+ <td width=43%>
+<input type="button" id="btn" value="pause" class="on" onclick="togglestyle(this)" />
+
+<input type="button" id="btn_how" value="how it works" class="on" onclick="togglestyle_how(this)" />
+
+<input type="button" id="goto_app" value="app" class="on" onclick="location.href='http://circadelic-design.appspot.com'" />
+
+<input type="button" id="goto_app" value="app" class="on" onclick="location.href='http://circadelic-design.appspot.com'" />
+
+</td>
+</tr></table>
+
+<!--
+	<div id='masonry' >
+	  <div class="item"><div ><img class='centeredImage' id="slide" width=90% /></div></div>
+	  
+	  <div class="item"><div ><img class='centeredImage' id="slide2" width=450px/></div></div>
+	</div>
+-->
+
+<p>
+<div id="blah" style="display:visible;">
+
+
+ <table>
+
+<td width = 3%></td>
+<td width=300>
+
+<a href="http://dutw1479.wbmt.tudelft.nl/~btighe/research.html"><img src="http://dutw1479.wbmt.tudelft.nl/~btighe/images/foam_demo.gif" width= 300></a>
+<p>physics simulation of soap bubbles (these are real bubbles in <a href="http://www.research.ed.ac.uk/portal/en/persons/gijs-katgert%2858b39da5-7378-408f-842a-ddfeaf3508e7%29.html">Gijs's experiment</a>).
+</td>
+<td><h2>+</h2></td>
+<td width=300>
+<table>
+<tr>
+<img src="tulips1.jpg" width= 300>
+</tr>
+<tr>
+<img src="tulips1_palette.png" width= 300>
+</tr>
+</table>
+<p>the colour palette for a photograph constructed using a cluster-finding algorithm called k-means
+</td>
+
+<td><h2>=</h2></td>
+
+<td width=300>
+<!-- img src="shafie5_1000iter_5_colourbalanced2.png" width= 300 -->
+<img src="tulips1_150c_v2pt4.png" width=300>
+<p>ART
+</td>
+
+</td>
+
+
+
+</table>
+
+<table width=90%> 
+<tr height=40></tr>
+<tr height=40>
+ <td width=3%></td>
+ 
+ <td width=43%>
+
+ <i>This is beautiful! I want a skirt! ... I bet I could write some code....</i>
+
+<!-- 
+ <p>
+ I love Hadieh Shafie's beautiful abstracts made of colourful cylinders of rolled-up paper. I also thought the concentric circle designs would make a fabulous skirt! There was just a little problem. When fabric is printed, the image doesn't cover the whole length of the cloth: the image is <i>tiled</i> to fill all the space. Unfortunately, this strategy means that the boundary between one tile and the next is rather obvious.
+ <p>
+ 
+
+
+<table>
+
+
+<td width=300 valign="top">
+<tr>
+The solution to make a seamless repeating pattern is to use 'looping boundary conditions'. This means that a circle which disappears off the left side of the tile will reappear on the right side. 
+</tr>
+</td>
+<td>
+<tr>
+<img src="packing_black_tiling.jpg" width=300>
+</tr>
+</td>
+</tr></table>
+
+<p>
+I also knew that I could build a circle packing by pretending that the circles are soap bubbles. The bubbles have a little kinetic energy, so they can wander around on the canvas. And when the bubbles squish against each other, they push each other apart. I built a simulation in which I slowly reduced the surface area of the canvas so that the bubbles were obliged to rearrange and pack more efficiently. 
+<p>
+It's worth observing that Shafie's circle packings, which I expect are prepared by starting at the bottom of the frame and building up layer by layer, are <i>very dense</i>. When you look at the packings, most of the canvas is covered by the circles. In two dimensions, <i>random close packing</i> (the ratio of the area filled by the circles to the area of the canvas) is about 84\%
+ 
+
+--> 
+
+  </td>
+ 
+ <td width=45%></td></tr></table>
+
+</div>
+
+
+<script type="text/javascript">
+
+//variable that will increment through the images
+var step=0
+
+function slideit(){
+ //if browser does not support the image object, exit.
+ if (!document.images)
+  return
+
+   
+  if (btn.value=='pause')
+ { 
+ document.getElementById('slide').src = slideimages[step].src
+ document.getElementById('slide2').src = slideimages2[step].src
+
+ if (step<3) 
+  step++
+ else
+  step=0
+  
+ //call function "slideit()" every 5.0 seconds
+ setTimeout("slideit()",5000)  
+ } 
+
+
+
+}
+
+slideit()
+
+</script>
+
+
+<script type="text/javascript">
+
+function toggle_how(){
+ //if browser does not support the image object, exit.
+ if (!document.images)
+  return
+  
+  if (btn_how.className=='off')
+ { 
+ document.getElementById('blah').style.display = ''
+ } 
+ else
+ {
+ document.getElementById('blah').style.display = 'none'
+ }
+
+setTimeout("toggle_how()",50)
+}
+
+toggle_how()
+
+</script>
+
+
+</body>
+</html>

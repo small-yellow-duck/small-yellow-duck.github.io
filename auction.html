@@ -72,6 +72,8 @@ Released   : 20130804
 			number of bids a user placed per referring URL, the number of bids placed by the user on each of the three
 			weekdays in the data, and the minimum and median times between a user's bid and the previous bid by another
 			user in the same auction.
+			<p>Here's the script <a href="https://github.com/small-yellow-duck/facebook_auction">script</a> I used to process
+			the data and generate predictions.
 			
 			</td></tr></table>			
 		</div>
@@ -204,14 +206,18 @@ Released   : 20130804
 			<table>
 			<tr>
 			<td valign=top width = 900><font style="line-height:2.0"> 
-			There is only bidding information for three day of each of the three weeks in the data - let's call these days
-			Monday, Tuesday and Wednesday. One way to characterize the difference between the number of bids on each day
-			is the entropy <tt>N!/(N_<sub>Mon</sub>!N_<sub>Tue</sub>!N_<sub>Wed</sub>)</tt>. <tt>N</tt> is the total number
-			of bids made by a given user and <tt>N<sub>i</sub></tt> is the total number of bids made by that user on
-			weekday <tt>i</tt>. Because the entropy is very large, it is smarter to calculate the log of the entropy. 
+			One way to characterize the variation in how bids were placed is the entropy. 
+			A concrete example of the entropy is the IP entropy: N!/(N_<sub>IP1</sub>! 
+			N<sub>IP2</sub>!... N<sub>IPn</sub>!). N is the total number of bids and N_<sub>IPn</sub> 
+			is the total number of bids placed from the nth IP. The entropy is a measure 
+			of how both randomly distributed the bids are, how many IPs there 
+			are and how many bids there are. A bidder that places all their bids from the same 
+			IP has an entropy of N!/N! = 1. Because the entropy is very large, it is smarter to 
+			calculate the log of the entropy. 
 			
-			<p><p>Entropy also turned out to be a useful way to characterize how a user's bidding activity is distributed
-			over different IPs and referring URLs.
+			<p><p>Entropy also turned out to be a useful way to characterize how a user's 
+			bidding activity is distributed over each of the three days of the week as well as
+			over the referring URLs.
 			
 			</td>
 			</tr>
@@ -269,7 +275,9 @@ Released   : 20130804
 			<b><ul>Assessing the quality of predictions</ul></b>
 			There was a lot of variation in the data set, so quantifying the performance of the classifier was difficult.
 			I used 100 splits (80%-train, 20%-validation) to cross-validate the predictions and then examined the 10th
-			percentile and 25th percentile score. Ultimately, this was helpful up until the last 0.003 or so.
+			percentile and 25th percentile score. Ultimately, this was helpful up until the last 0.003 or so. I typically
+			found that my leaderboard score was about 0.008 less than the scores I was getting for the 25th percentile 
+			for my cross-validation.
 			
 			</td>
 			</tr>			

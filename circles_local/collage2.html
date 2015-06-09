@@ -1,0 +1,242 @@
+<html>
+<head>
+	<title>Masonry Layout with Mazonry Plugin</title>
+	
+
+	<style>
+	* {
+	  -webkit-box-sizing: border-box;
+	     -moz-box-sizing: border-box;
+		  box-sizing: border-box;
+	}
+
+	.item {
+	  width:  240px;
+	  height: 120px;
+	  float: left;
+	  background: #2296DD;
+	  border: 2px solid #333;
+	}
+
+	.item.thumbnail { width:  110px;height: 110px; background:#cfcfcf }
+	.item.medium { width:  170px;height: 170px; background: #A6E392}
+	.item.large { width:  360px;height: 360px; background: #111111}
+	
+	
+  .centeredImage
+    {
+    text-align:center;
+    display:block;
+    position:absolute;
+    top: 50%;                         /* 3 */
+   transform: translate(0, -50%)
+    }
+
+	</style>
+
+
+<style type="text/css">
+.on { 
+border:1px outset;
+color:#369;
+background:#efefef; 
+}
+
+.off {
+border:1px outset;
+color:#369;
+background:#f9d543; 
+}
+</style>
+
+<script language="javascript">
+function togglestyle(el){
+    if(el.className == "on") {
+    	el.className="off";
+    	el.value="play";
+    } else {
+    	el.className="on";
+    	el.value="pause";
+    }
+}
+</script>
+
+
+<script type="text/javascript">
+
+var slideimages = new Array() // create new array to preload images
+slideimages[0] = new Image() // create new instance of image object
+slideimages[0].src = "jericho_beach.jpg" // set image object src property to an image's src, preloading that image in the process
+slideimages[1] = new Image()
+slideimages[1].src = "jericho_sunset2.jpg"
+slideimages[2] = new Image()
+slideimages[2].src = "kayak_mamangua.jpg"
+
+var slideimages2 = new Array()
+slideimages2[0] = new Image() // create new instance of image object
+slideimages2[0].src = "jericho_sunset_dark_150c.png" // set image object src property to an image's src, preloading that image in the process
+slideimages2[1] = new Image()
+slideimages2[1].src = "jericho_sunset2_dark_150c.png"
+slideimages2[2] = new Image()
+slideimages2[2].src = "jericho_sunset2_dark_150c.png"
+
+var slideimages3 = new Array()
+slideimages3[0] = new Image() // create new instance of image object
+slideimages3[0].src = "jericho_sunset_light_150c.png" // set image object src property to an image's src, preloading that image in the process
+slideimages3[1] = new Image()
+slideimages3[1].src = "jericho_sunset2_light_150c.png"
+slideimages3[2] = new Image()
+slideimages3[2].src = "kayak_mamangua.jpg"
+
+
+document.getElementById('slide').src = slideimages[step].src
+document.getElementById('slide2').src = slideimages2[step].src
+document.getElementById('slide3').src = slideimages3[step].src
+
+document.getElementById('slide4').src = slideimages[step].src 
+</script>
+	
+</head>
+<body>
+
+
+
+<table width=100%>
+<tr>
+<td width=30% >
+<img  id="slide2" width=100% />
+</td>
+<td width=40% >
+<div><img  id="slide" width=100% /></div>
+</td><td width=30%>
+<img  id="slide3" width=100% />
+</td>
+</tr></table>
+
+
+
+<input type="button" id="btn" value="pause" class="on" onclick="togglestyle(this)" />
+
+
+
+
+	<div id='masonry' >
+	  <div class="item"><div style="width: 235px; height: 115px; overflow: hidden"><img  id="slide0_" width=125% /></div></div>
+	  <div class="item"><div style="width: 235px; height: 115px; overflow: hidden"><img  id="slide1_" width=200% /></div></div>
+	  <div class="item thumbnail"><img  id="slide0_thumb" width=100% /></div>
+	  <div class="item medium"><div style="width: 235px; height: 175px; overflow: hidden"><img  id="slide0_med"  width=170%/></div></div>
+	  <div class="item"><div style="width: 235px; height: 115px; overflow: hidden"><img  id="slide2_" width=400% /></div></div>
+	  <div class="item large"><img  class='centeredImage' id="slide4" width=100% /></div>
+	  <div class="item"><div style="width: 235px; height: 115px; overflow: hidden"><img  id="slide3_" width=130%/></div></div>
+	  <div class="item medium"><div style="width: 235px; height: 175px; overflow: hidden"><img  id="slide1_med"  width=110%/></div></div>
+	  <div class="item medium"><div style="width: 235px; height: 175px; overflow: hidden"><img  id="slide2_med"  width=250%/></div></div>
+	  <div class="item"><div style="width: 235px; height: 115px; overflow: hidden"><img   id="slide4_" width=150% /></div></div>
+	  <div class="item"><div style="width: 235px; height: 115px; overflow: hidden"><img  id="slide5_" width=300% /></div></div>
+	  <div class="item medium"><div style="width: 235px; height: 175px; overflow: hidden"><img  id="slide3_med"  width=250%/></div></div>
+	  <div class="item"></div>
+	  <div class="item"></div>
+	  <div class="item medium"></div>
+	  <div class="item medium"></div>
+	  <div class="item"></div>
+	  <div class="item thumbnail"></div>
+	  <div class="item"></div>
+	  <div class="item thumbnail"></div>
+	  <div class="item large"></div>
+	  <div class="item thumbnail"></div>
+	  <div class="item"></div>
+	  <div class="item thumbnail"></div>
+	  <div class="item"></div>
+	  <div class="item medium"></div>
+	  <div class="item medium"></div>
+	  <div class="item"></div>
+	  <div class="item"></div>
+	  <div class="item large"></div>
+	  <div class="item medium"></div>
+	  <div class="item medium"></div>
+	  <div class="item"></div>
+	  <div class="item"></div>
+	  <div class="item medium"></div>
+	  <div class="item"></div>
+	  <div class="item"></div>
+	  <div class="item medium"></div>
+	  <div class="item"></div>
+	  <div class="item"></div>
+	  <div class="item medium"></div>
+	  <div class="item"></div>
+	  <div class="item thumbnail"></div>
+	  <div class="item"></div>
+	  <div class="item thumbnail"></div>
+	  <div class="item large"></div>
+	  <div class="item large"></div>
+	  <div class="item medium"></div>
+	  <div class="item"></div>
+	  <div class="item medium"></div>
+	  <div class="item"></div>
+	  <div class="item"></div>
+	  <div class="item"></div>
+
+	
+	</div>
+
+
+	
+	
+<script src='masonry.pkgd.min.js'></script>
+<script>
+var container = document.querySelector('#masonry');
+var msnry = new Masonry( container, {
+  columnWidth: 50,
+  itemSelector: '.item'
+});
+</script>
+
+
+
+
+<script type="text/javascript">
+
+//variable that will increment through the images
+var step=0
+
+function slideit(){
+ //if browser does not support the image object, exit.
+ if (!document.images)
+  return
+  
+  if (btn.value=='pause')
+ { 
+ document.getElementById('slide').src = slideimages[step].src
+ document.getElementById('slide2').src = slideimages2[step].src
+ document.getElementById('slide3').src = slideimages3[step].src
+ 
+ document.getElementById('slide4').src = slideimages[step].src
+ document.getElementById('slide0_').src = slideimages2[step].src
+ document.getElementById('slide0_med').src = slideimages3[step].src 
+ document.getElementById('slide0_thumb').src = slideimages3[step].src 
+ document.getElementById('slide1_').src = slideimages2[step].src 
+ document.getElementById('slide2_').src = slideimages2[step].src  
+ document.getElementById('slide3_').src = slideimages2[step].src 
+ document.getElementById('slide4_').src = slideimages2[step].src 
+ document.getElementById('slide5_').src = slideimages2[step].src 
+ document.getElementById('slide1_med').src = slideimages3[step].src 
+ document.getElementById('slide2_med').src = slideimages3[step].src 
+ document.getElementById('slide3_med').src = slideimages3[step].src 
+  
+ if (step<2) 
+  step++
+ else
+  step=0
+ } 
+
+ //call function "slideit()" every 5.0 seconds
+ setTimeout("slideit()",5000)
+
+}
+
+slideit()
+
+</script>
+
+
+</body>
+</html>
