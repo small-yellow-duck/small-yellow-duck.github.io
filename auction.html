@@ -167,12 +167,6 @@ Released   : 20130804
 			daily spike in human bidding activity suggested that shifting the bids/time histogram might not actually be
 			very instructive.
 			
-			<b><ul>Auction length</ul></b>
-			Some of the auctions only had bidding activity in one of the three-day chunks, while other auctions included
-			bidding activity in two of the chunks - ie, some of the auctions lasted at least 17 days. It turned out that the
-			durations of auctions which the bidder participated in was slightly helpful in labeling bots. What fraction of
-			the auctions the user participated in were longer than two weeks? What was the median time between the user's  
-			bids and the start of the auction? The median time between a user's bids and the end of an auction?
 			</td>
 			</tr>
 			</table>
@@ -236,6 +230,25 @@ Released   : 20130804
 			The model got additional mileage out of the fraction of bids a user place in
 			each of the 199 countries, as well as the fraction of IPs from which a user
 			placed a bid from which another user who was a bot also placed a bid.
+			</td></tr>
+			</table>
+			<table>
+			<td valign=top align=left width=450><font style="line-height:2.0">
+			<b><ul>Auction duration</ul></b>
+			Some of the auctions only had bidding activity in one of the three-day chunks, while other auctions included
+			bidding activity in two of the chunks - ie, some of the auctions lasted at least 17 days. It turned out that the
+			durations of auctions which the bidder participated in was slightly helpful in labeling bots. What fraction of
+			the auctions the user participated in were longer than two weeks? What was the median time between the user's  
+			bids and the start of the auction? The median time between a user's bids and the end of an auction?
+			
+			<p><p>I was really stumped about why there were hardly any bids placed by robots between 11 and 14 days before 
+			the end of the auction. I wondered if this behaviour might have helped to explain why we only got to see three
+			days out of every two weeks in the data....
+			</td>
+			<td valign=top align=left width=550>
+			<figure>
+			<img src="facebook_auction/hist_time_before_auction_end_bots_humans_norm.png" width=450 >
+			<figcaption width=450></figcaption></figure>
 			</td>
 			</tr>
 			</table>			
