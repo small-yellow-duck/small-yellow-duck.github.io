@@ -13,7 +13,7 @@ Released   : 20130804
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>SquareAway</title>
+<title>smallyellowduck</title>
 <meta name="keywords" content="" />
 <meta name="description" content="" />
 <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900|Open+Sans:400,300,600,700,800" rel="stylesheet" />
@@ -92,7 +92,7 @@ Released   : 20130804
 			<td  valign=top width=350> <font style="line-height:2.0"> 
 			<b><ul>Procedure, diagnosis and drug codes</ul></b>
 			
-Most of the predictive power in my model comes from using several predictive diagnostic, procedure and drug codes, along with payment information for procedures. Since 8 GB of memory was not enough to use a pivot table to count the number of occurrences for each code for every patient, I identified some useful codes by rounding the codes before building the pivot table. I then selected the all the unrounded codes corresponding to the best-performing rounded codes and constructed a second model using only these "most useful" codes. As 8 GB of memory was also not enough for all the training and test patients, so I split the population up into 14 groups by state. An OK solution, but clearly inferior to just going and <a href="https://www.kaggle.com/c/cervical-cancer-screening/forums/t/18693/being-smart-about-loading-data/106653#post106653">renting lots of RAM</a> A cleverer solution would have also been to use <a href="https://www.kaggle.com/c/cervical-cancer-screening/forums/t/18693/being-smart-about-loading-data/106663#post106663">sparse matrices to store the data</a> instead of dense ones.
+Most of the predictive power in my model comes from using several predictive diagnostic, procedure and drug codes, along with payment information for procedures. Since 8 GB of memory was not enough to use a pivot table to count the number of occurrences for each code for every patient, I identified some useful codes by rounding the codes before building the pivot table. I then selected the all the unrounded codes corresponding to the best-performing rounded codes and constructed a second model using only these "most useful" codes. As 8 GB of memory was also not enough for all the training and test patients, so I split the population up into 14 groups by state. An OK solution, but clearly inferior to just going and <a href="https://www.kaggle.com/c/cervical-cancer-screening/forums/t/18693/being-smart-about-loading-data/106653#post106653">renting lots of RAM</a>. A cleverer solution would have also been to use <a href="https://www.kaggle.com/c/cervical-cancer-screening/forums/t/18693/being-smart-about-loading-data/106663#post106663">sparse matrices to store the data</a> instead of dense ones.
 			
 			</td>
 			<td valign=top width = 550>
@@ -117,7 +117,7 @@ Most of the predictive power in my model comes from using several predictive dia
 			Once I'd built an OK model using the procedure, diagnosis and drug code data, I was particularly curious about another question: were there some physicians whose patients were much more (or much less) likely to be screened?
 			
 			In the adjacent plot, I've compared a model without physician information to
-			a model which includes physician information - especially for physicians who see large numbers of patients, including physician information improves predictions. Green circles indicate that a particular physician's patients have a higher fraction of screeners than expected based on a model which does not include physician information.
+			a model which includes physician information - especially for physicians who see large numbers of patients, including physician information improves predictions. Green circles indicate that a particular physician's patients have a higher fraction of screeners than expected relative to a model which does not include physician information.
 
 
 			</td>
