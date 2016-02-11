@@ -1,0 +1,239 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!--
+Design by Free CSS Templates
+http://www.freecsstemplates.org
+Released for free under a Creative Commons Attribution 2.5 License
+
+Name       : SquareAway 
+Description: A four-column, fixed-width design with dark color scheme.
+Version    : 1.0
+Released   : 20130804
+
+-->
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>SquareAway</title>
+<meta name="keywords" content="" />
+<meta name="description" content="" />
+<link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900|Open+Sans:400,300,600,700,800" rel="stylesheet" />
+<link href="default.css" rel="stylesheet" type="text/css" media="all" />
+<link href="fonts.css" rel="stylesheet" type="text/css" media="all" />
+
+<!--[if IE 6]><link href="default_ie6.css" rel="stylesheet" type="text/css" /><![endif]-->
+
+</head>
+<body>
+<div id="logo" class="container">
+	<h1><a href="#" class="icon icon-spinner"><span>big data. small yellow duck.</span></a></h1>
+</div>
+<div id="header">
+	<div id="menu" class="container">
+		<ul>
+			<li class="current_page_item"><a href="index.html" accesskey="1" title="">Homepage</a></li>
+			<li><a href="about.html" accesskey="1" title="">About</a></li>
+
+		</ul>
+	</div>
+</div>
+
+
+<div id="page-wrapper">
+	<div id="banner" class="container"><a href="#"><img src="images/skyline.jpg" width="1200" height="300" alt="" /></a></div>
+
+	
+	<div id="featured" class="container">
+		<div class="box">
+			<div class="title">
+				<h2>Predicting which patients are screened for cervical cancer</h2>
+			</div>
+			<p>
+			<hr width=900 align=left>
+			<table><tr width=900>
+			Based on medical records, which patients are being screened for cervical cancer?
+			</tr></table>
+			
+			<hr width=900 align=left>
+			
+			<p>
+
+			<table><tr width=900>
+			<td width = 900 valign=top>
+			<font style="line-height:2.0"> 
+			<p>The (huge) data set consists of diagnosis, procedure and drug codes, the date that they were assigned, a claim ID, a physician ID and the patient ID. We also know the state the patient lives in, their age group and some information on their education and income.
+			
+			<p>I did two things in this competition:
+			<ol>
+  <li style="font-weight: bold;">1. Build an OK model that identified several predictive diagnostic, procedure and drug codes.</li>
+  <li style="font-weight: bold;">2. Extend the model to examine whether there were physicians whose patients were much more (or much less) likely to be screened than would be expected from (1)</li>
+</ol>
+			
+
+
+
+<!--
+			<p>Here's the <a href="https://github.com/small-yellow-duck/facebook_auction">script</a> I used to process
+			the data and generate predictions. 
+--!>			
+		
+			</td></tr></table>			
+		</div>
+	</div>			
+
+	<div id="featured" class="container">
+		<div class="box">	
+			<div class="title">
+				<h2>1. A simple model</h2>
+			</div>
+			
+			<table>
+			
+			<tr>
+			<td  valign=top width=350> <font style="line-height:2.0"> 
+			<b><ul>Procedure, diagnosis and drug codes</ul></b>
+			
+Most of the predictive power in my model comes from using several predictive diagnostic, procedure and drug codes, along with payment information for procedures. Since 8 GB of memory was not enough to use a pivot table to count the number of occurrences for each code for every patient, I identified some useful codes by rounding the codes before building the pivot table. I then selected the all the unrounded codes corresponding to the best-performing rounded codes and constructed a second model using only these "most useful" codes. As 8 GB of memory was also not enough for all the training and test patients, so I split the population up into 14 groups by state. An OK solution, but clearly inferior to just going and <a href="https://www.kaggle.com/c/cervical-cancer-screening/forums/t/18693/being-smart-about-loading-data/106653#post106653">renting lots of RAM</a> A cleverer solution would have also been to use <a href="https://www.kaggle.com/c/cervical-cancer-screening/forums/t/18693/being-smart-about-loading-data/106663#post106663">sparse matrices to store the data</a> instead of dense ones.
+			
+			</td>
+			<td valign=top width = 550>
+			<img src="genentech/feature_importances_bar.png" width = 550>
+			</td>
+			</tr>
+			</table>	
+	
+	
+		</div>
+		<div class="box">	
+			<div class="title">
+				<h2>2. Including physician information</h2>
+			</div>
+
+
+			<table>
+			<tr>
+			<td valign=top align=left width=450><font style="line-height:2.0"> 
+						<p><p><b><ul>Improving the model by identifying the primary physician associated with a patient for different procedure and diagnosis codes</ul></b>
+			
+			Once I'd built an OK model using the procedure, diagnosis and drug code data, I was particularly curious about another question: were there some physicians whose patients were much more (or much less) likely to be screened?
+			
+			In the adjacent plot, I've compared a model without physician information to
+			a model which includes physician information - especially for physicians who see large numbers of patients, including physician information improves predictions. Green circles indicate that a particular physician's patients have a higher fraction of screeners than expected based on a model which does not include physician information.
+
+
+			</td>
+			<td valign=top align=left width=450>
+			<figure>
+			<img src="genentech/doctor_model_vs_non_doctor_model_proc_9939_circles.png" width=450 >
+			<figcaption width=450></figcaption></figure>
+			</td>	
+			</tr>			
+
+			</table>			
+		
+			
+			<table>
+			
+			<tr>
+			<td  valign=top width=900> <font style="line-height:2.0"> 
+			</td>
+			</tr>
+			</table>
+			
+
+			
+			<table>
+			<tr valign=top width=900>
+			<td  valign=top width=900> <font style="line-height:2.0"> 
+			<p><p>One approach to the problem of incorporating physician information into the model is to build a pivot table indicating on how many unique dates a given doctor and patient had interacted. Another approach might be to construct a pivot table containing the number of times a given doctor had a diagnosis/procedure code associated with a patient. The problem with both these approaches is that pivot tables rapidly become too huge to fit in memory.
+
+My approach was instead to examine a few of the most useful procedure and diagnosis codes and enquire "which doctors have awarded these codes?" Once I'd identified some "interesting" doctors, I tallied up how many times each patient had been associated with any of those physicians. For each patient, I then identified the doctor who'd assigned that patient the largest number of codes, optimistic that this was a decent proxy for the number of contacts. The "physician" feature simply consisted of a column with the physician IDs corresponding to the doctor involved with a particular procedure or diagnosis code whom had interacted with a given patient the largest number of times.
+
+			<p>
+			
+			</td>
+			</tr>
+			</table>
+
+			<table>
+			<tr>
+			<td valign=top width = 450>
+			<img src="genentech/doctor_model_vs_non_doctor_model_diag_V72_626_circles.png" width = 450>
+			</td>
+			<td valign=top width = 450>
+			<img src="genentech/doctor_model_vs_non_doctor_model_proc_8759_circles.png" width = 450>
+			</td>
+			</tr>
+			</table>
+
+			
+			<table>
+			<tr>
+			<td valign=top align=left width=900><font style="line-height:2.0"> 
+						<p><p><b><ul>Physician-patient relationships encode other kinds of information</ul></b>
+			Identifying the primary physician associated with a particular kind of care for each patient is actually encoding a lot of information, which might include things like:
+<ol>			
+<li>1. location - patients in similar geographic locations visit nearby doctors</li>
+<li>2. income and education - in the US location is also a proxy for income and education</li>
+<li>3. physician effectiveness</li>
+</ol>			
+
+Introducing the primary physician for a few diagnosis/procedure codes reduced the importance of variables such as ethnicity, income, education and state in the model.
+
+			</td>
+			</tr>
+			
+			<tr>
+			<td valign=top align=left width=900>
+			<figure>
+			<img src="genentech/feature_importances_labeled.png" width=800 >
+			<figcaption width=800></figcaption></figure>
+			</td>	
+			</tr>			
+
+			</table>	
+
+			
+			<table>
+			<tr>
+			<td valign=top align=left width=450><font style="line-height:2.0"> 
+						<p><p><b><ul>Physician-patient relationships encode other kinds of information</ul></b>
+			The primary physicians identified above can also be linked to each other through the patients they serve and a second set of specialist physicians: GPs who see patients for check-ups (code 9939X) can be connected to each other through their patients and the physician those patients are associated with for procedure code 8759X.
+			
+			<p>Since large numbers of physicians are involved, even at the state level, the overlap matrix can be reduced to just examine physicians serving more than 10 patients
+			<p> The plot at the left can be used to identify clusters of patients with particularly low or high screening rates. The clusters are identified by mapping the matrix to a network and using cuthill_mckee_ordering in networkx.utils.
+
+
+			</td>
+			<td valign=top align=left width=450>
+			<figure>
+			<img src="genentech/friendship_bracelet_MA.png" width=450 >
+			<figcaption width=450></figcaption></figure>
+			</td>	
+			</tr>			
+			</table>
+
+			<table>
+			<tr>
+			<td valign=top align=left width=700>
+			<figure>
+			<img src="genentech/friendship_bracelet_PA.png" width=700 >
+			<figcaption width=700></figcaption></figure>
+			</td>	
+			</tr>	
+			</table>		
+				
+		</div>
+		
+	</div>
+
+
+
+</div>
+
+
+
+<div id="copyright">
+	<p>Copyright (c) 2013 small yellow duck. All rights reserved. Design by <a href="http://www.freecsstemplates.org/" rel="nofollow">FreeCSSTemplates.org</a>.</p>
+</div>
+</body>
+</html>
