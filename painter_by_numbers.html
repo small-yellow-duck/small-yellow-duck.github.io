@@ -1,0 +1,340 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!--
+Design by Free CSS Templates
+http://www.freecsstemplates.org
+Released for free under a Creative Commons Attribution 2.5 License
+
+Name       : SquareAway 
+Description: A four-column, fixed-width design with dark color scheme.
+Version    : 1.0
+Released   : 20130804
+
+-->
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>smallyellowduck</title>
+<meta name="keywords" content="" />
+<meta name="description" content="" />
+<link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900|Open+Sans:400,300,600,700,800" rel="stylesheet" />
+<link href="default.css" rel="stylesheet" type="text/css" media="all" />
+<link href="fonts.css" rel="stylesheet" type="text/css" media="all" />
+
+<!--[if IE 6]><link href="default_ie6.css" rel="stylesheet" type="text/css" /><![endif]-->
+
+</head>
+<body>
+<div id="logo" class="container">
+	<h1><a href="#" class="icon icon-spinner"><span>big data. small yellow duck.</span></a></h1>
+</div>
+<div id="header">
+	<div id="menu" class="container">
+		<ul>
+			<li class="current_page_item"><a href="index.html" accesskey="1" title="">Homepage</a></li>
+			<li><a href="about.html" accesskey="1" title="">About</a></li>
+
+		</ul>
+	</div>
+</div>
+
+
+<div id="page-wrapper">
+	<div id="banner" class="container"><a href="#"><img src="images/skyline.jpg" width="1200" height="300" alt="" /></a></div>
+
+	
+	<div id="featured" class="container">
+		<div class="box">
+			<div class="title">
+				<h2>Painter By Numbers</h2>
+			</div>
+			<p>
+			<hr width=900 align=left>
+			<table><tr width=900>
+			Is a pair of paintings by the same artist?
+			</tr></table>
+			
+			<hr width=900 align=left>
+			
+			<p>
+
+			<table><tr width=900>
+			<td width = 900 valign=top>
+			<font style="line-height:2.0"> 
+			<p>After participating in a dozen or so Kaggle competitions, I was excited to 
+			design and run a Kaggle competition myself!</p>
+
+			<p>The Painter By Numbers competition challenges Kagglers to examine pairs of paintings and predict whether the paintings are by the same artist. The exciting thing about constructing the competition in this way is that instead of learning to label paintings as 'van Gogh' or 'Rembrandt', the algorithm is learning how to distinguish between artists. This means that the algorithm can be used to extrapolate to artists whose work it has never been trained on.</p>			
+</tr>
+</td>		
+
+
+			</table>	
+		
+		</div>
+		
+		
+		
+		
+		<div class="box">	
+			<div class="title">
+				<h2>Competition goals</h2>
+			</div>
+
+
+			<table>
+						
+			<tr>
+			<td  valign=top width=900> <font style="line-height:2.0"> 
+			
+<b><ul>Building a classification algorithm that can extrapolate to new classes</ul></b>
+
+<p>The pairwise comparison aspect of the competition motivates using a "siamese" neural network. In a siamese neural network, there are two inputs which are processed using the same neural network. The outputs of these two networks are then combined. I prepared some sample code for training a siamese neural network on the MNIST data set:
+<a href='https://github.com/small-yellow-duck/kaggle_art/blob/master/mnist_siamese_cnn.py'>mnist_siamese_cnn.py</a>.</p>
+
+
+<b><ul>Desirable improvements to existing image classification algorithms</ul></b>
+
+I hoped that this challenge would motivate people to make two kinds of improvements to imaging algorithms:
+
+			<ol>
+  <li>1. As the images in this data set are all different sizes, I'd like to see a solution which is able to accept input images of different dimensions instead of first resizing all the images so that they have the same width and height.</li>
+  <li>2. I'd also like to see some strategies for identifying the "interesting" parts of an image for the algorithm to focus on.</li>
+</ol>
+
+
+
+<b><ul>Data augmentation</ul></b>
+
+<p>Possible strategies that might be worth trying:</p>
+
+			<ol>
+  <li>augment the data set by flipping the images left-to-right and labeling the mirrored images as belonging to a new artist</li>
+  <li>augment the data set by making small adjustments to the colour balance in the images</li>
+  <li>augment the data set by converting the images to greyscale</li>
+  <li> augment the data set by decreasing the resolution of the images</li>
+  <li>augment the data set by cropping the images randomly (or developing a scheme to crop the images)</li>
+</ol>
+    
+      
+</tr>
+</td>		
+
+
+			</table>	
+		
+		</div>
+		
+		
+		
+		
+		<div class="box">	
+			<div class="title">
+				<h2>Competition considerations</h2>
+			</div>
+
+
+			<table>
+						
+			<tr>
+			<td  valign=top width=900> <font style="line-height:2.0"> 
+      
+
+<b><ul>Leakage</ul></b>
+
+<p>I've identified two possible sources of leakage and I'm curious to see how significant they will be as the competition progresses:
+
+<ol>
+  <li>Some artists sign their paintings.</li>
+    <li>Works by a single artist may have been scanned or photographed at the same resolution.</li>
+
+<p>In addition, I've also wondered if the works in the data set are truly high enough resolution - I certainly anticipate that algorithms would perform better with higher resolution images. But hey, let's see what we can do with the data that we do have!</p>
+
+<b><ul>Including pixel density and resolution information</ul></b>
+
+<p>On the Kaggle forum, user Guilhermo Folego <a href='https://www.kaggle.com/c/painter-by-numbers/forums/t/20547/welcome/121089#post121089'>pointed out</a> that it is desirable to have a data set where the pixel densities / unit physical area are available. Unfortunately, wikiart does not always include the physical dimensions of each painting. I decided that the data set as it stands is still interesting - after all, people can differentiate a Vermeer from a van Gogh without having to know what resolution photographs of the paintings were taken at. </p>
+
+<p>It's also true that creating a data set where all the image are the same resolution would likely allow the algorithm to make better use of information at the scale of brush strokes. The existing data set contains images with a range of resolutions, so the algorithm is not likely going to be able to make use of high-resolution details.</p>
+
+			</td>
+			</tr>
+			</table>	
+		
+		
+		
+		</div>
+		
+		
+		
+		
+		<div class="box">	
+			<div class="title">
+				<h2>Creating an interesting test data set</h2>
+			</div>
+
+
+
+			<table>
+			<tr>
+			<td valign=top align=left width=350><font style="line-height:2.0"> 
+						
+
+<p>One of the challenges with setting up the competition was that the test set contained around 20,000 images. Asking competitors to submit predictions for every possible pair of
+paintings is kind of unwieldy, both because the time required to generate every prediction
+is onerous and because the submission file would run to several GB!</p>
+
+<p>In order to reduce the number of comparisons, I decided to group the paintings according to the artist style metadata available on wikiart. This would mean that the algorithm is generally being asked to do the more challenging task of evaluating pairs of paintings that are more similar: it's a more interesting challenge to see if the algorithm can distinguish Vermeer from Rembrandt than  Hokusai from Rembrandt.</p>
+
+<p>The script that groups the paintings in the plot at right is <a href=' https://github.com/small-yellow-duck/kaggle_art/blob/master/plot_artist_style_overlaps.py'>plot_artist_style_overlaps.py</a>
+			
+			</td>
+			<td valign=top width = 550>
+			<img src="https://github.com/small-yellow-duck/kaggle_art/blob/master/artists_clustered_by_style_train_set.png?raw=true" width = 550>
+			</td>
+			</tr>
+			</table>	
+		
+		</div>
+		
+		
+		
+		
+		<div class="box">	
+			<div class="title">
+				<h2>Evaluating the algorithms</h2>
+			</div>
+
+
+			<table>
+			<tr>
+			<td valign=top align=left width=400><font style="line-height:2.0"> 
+						<p><p>The AUC metric was used to evaluate the algorithms. <b>The three top-scoring algorithms all had AUCs greater than 0.9.</b> If I had a surplus of time and ambition, I would build an app to serve pairs of paintings up to human viewers in order to determine if the algorithm is outperforming people.								
+			
+<p>One thing I did do to compare the top algorithm to human performance was to slip a famous forger into the test set. Han van Meegeren was a Dutch artist who created several paintings in the style of Dutch masters from the 1700's. van Meegeren was bitter about the lack of commercial success he had with his own art, so he took up creating "new" paintings by old masters and he even sold some forgeries to the Nazis during World War II. I generated a pairwise comparison table for first-place winner <a href='https://www.kaggle.com/nejc92'>orange-nejc</a>'s predictions for van Meegeren and Vermeer paintings in the test set (see right).</p>
+
+			</td>			
+
+			</td>
+			<td valign=top align=left width=500>
+			<figure>
+			<img src="../kaggle_art/vermeer_vs_van_meegeren.png" width=500 >
+			<figcaption width=500></figcaption></figure>
+			</td>	
+			
+			</tr>
+			
+			</table>
+			
+			<table>
+			<tr>
+			
+						</td>
+			<td valign=top align=left width=500>
+			<figure>
+			<img src="../kaggle_art/vermeer_vs_van_meegeren_hist.png" width=500 >
+			<figcaption width=500></figcaption></figure>
+			</td>	
+			
+			
+			<td valign=top align=left width=400><font style="line-height:2.0"> 			
+
+Excitingly, <a href='https://www.kaggle.com/nejc92'>orange-nejc</a> generally predicts that Vermeer paintings are more similar to each other than van Meegeren's paintings are to Vermeer's paintings. Unsurprisingly, <a href='https://www.kaggle.com/nejc92'>orange-nejc</a> also predicts that van Meegeren's paintings are less similar to each other than Vermeer's paintings are to each other - van Meegeren forged paintings in the style of several artists.
+
+
+
+
+
+
+			
+			</tr>			
+
+			<table>	
+			<tr>
+			<td >
+			
+			<img src="http://www.boijmans.nl/images/press/full/534/Han_van_Meegeren_-_De_Emmausgangers_534.jpg" height=220 >
+			<p>Dinner at Emmaus (van Meegeren)
+			</td>
+
+			<td >
+			
+			<img src="http://hanvanmeegeren.webs.com/Interieur_met_paar_aan_clavecimbel.jpg" height=220 >
+			<p>Interior with couple and clavichord (van Meegeren)
+			</td>			
+			</tr>
+			
+			</table>
+			
+			<table>
+			<tr>
+			
+			
+			<td>
+			<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/20/Johannes_Vermeer_-_Het_melkmeisje_-_Google_Art_Project.jpg/600px-Johannes_Vermeer_-_Het_melkmeisje_-_Google_Art_Project.jpg" height=220 >
+			<p>The Milkmaid (Vermeer)
+			</td>				
+			
+			
+			<td>
+			<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c6/J._VERMEER_-_El_ge%C3%B3grafo_%28Museo_St%C3%A4del%2C_Fr%C3%A1ncfort_del_Meno%2C_1669%29.jpg/600px-J._VERMEER_-_El_ge%C3%B3grafo_%28Museo_St%C3%A4del%2C_Fr%C3%A1ncfort_del_Meno%2C_1669%29.jpg" height=220 >
+			<p>The Geographer (Vermeer)
+			</td>				
+
+			<td >
+			
+			<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/32/JohannesVermeer-TheAstronomer%281668%29.jpg/1024px-JohannesVermeer-TheAstronomer%281668%29.jpg" height=220 >
+			<p>The Astronomer (Vermeer)
+			</td>
+			
+
+			<td>
+			
+			<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/49/Jan_Vermeer_van_Delft_014.jpg/1024px-Jan_Vermeer_van_Delft_014.jpg" height=220 >
+			<p>Lady at the Virginals with a Gentleman (Vermeer)
+			</td>
+
+			</tr>
+			
+			</table>
+
+			</table>			
+		
+			
+			<table>
+			
+			<tr>
+			<td  valign=top width=900> <font style="line-height:2.0"> 
+			<b><ul>Can the algorithm extrapolate?</ul></b>
+			<p>One of the goals of this competition was to determine if the algorithm could extrapolate to images by artists who didn't have work in the training set. I've computed the AUC for <a href='https://www.kaggle.com/nejc92'>orange-nejc</a>'s predictions for two cases:
+			
+			<table>
+			<tr>
+			<td>AUC for pairs of images by artists with work in the training data set: </td> <td> </td>
+			<td>0.94218</td>
+			
+			<tr>
+			<td>AUC for pairs of images by artists with no work in the training data set:   </td> <td> </td>
+			<td>0.82509</td>
+			</tr>
+			</table>
+			
+			<p>I should do some boot-strapping to generate meaningful error bars, but it looks like <a href='https://www.kaggle.com/nejc92'>orange-nejc</a>'s algorithm is better at interpolating from artists whose work it has seen before than at extrapolating to work by unfamiliar artists.
+			
+			</td>
+			</tr>
+			</table>
+			
+		</div>
+		
+	</div>
+
+
+
+</div>
+
+
+
+<div id="copyright">
+	<p>Copyright (c) 2013 small yellow duck. All rights reserved. Design by <a href="http://www.freecsstemplates.org/" rel="nofollow">FreeCSSTemplates.org</a>.</p>
+</div>
+</body>
+</html>
