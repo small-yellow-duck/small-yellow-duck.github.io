@@ -1,49 +1,69 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<!--
-Design by Free CSS Templates
-http://www.freecsstemplates.org
-Released for free under a Creative Commons Attribution 2.5 License
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	  <meta name="author" content="Kiri" />
+    <meta name="description" content="Personal website and resume">
 
-Name       : SquareAway 
-Description: A four-column, fixed-width design with dark color scheme.
-Version    : 1.0
-Released   : 20130804
-
--->
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>SquareAway</title>
-<meta name="keywords" content="" />
-<meta name="description" content="" />
-<link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900|Open+Sans:400,300,600,700,800" rel="stylesheet" />
-<link href="default.css" rel="stylesheet" type="text/css" media="all" />
-<link href="fonts.css" rel="stylesheet" type="text/css" media="all" />
-
-<!--[if IE 6]><link href="default_ie6.css" rel="stylesheet" type="text/css" /><![endif]-->
-
-</head>
-<body>
-<div id="logo" class="container">
-	<h1><a href="#" class="icon icon-spinner"><span>big data? small yellow duck</span></a></h1>
-</div>
-<div id="header">
-	<div id="menu" class="container">
-		<ul>
-			<li class="current_page_item"><a href="index.html" accesskey="1" title="">Homepage</a></li>
-			<li><a href="about.html" accesskey="1" title="">About</a></li>
-
-		</ul>
-	</div>
-</div>
-
-
-<div id="page-wrapper">
-	<div id="banner" class="container"><a href="#"><img src="images/skyline.jpg" width="1200" height="300" alt="" /></a></div>
-
+    
+      <title>Projects</title>
+    
 	
+    <!-- Bootstrap -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha256-MfvZlkHCEqatNoGiOXveE8FIwMzZg4W85qfrfIFBfYc= sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ=="
+    crossorigin="anonymous">
+
+
+	<!-- Custom styles for this template -->
+    <link rel="stylesheet" type="text/css" href="static/css/main.css" />
+	<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,400,200bold,400bold" />
+	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" type="text/css" href="static/css/syntax.css" />
+
+    <!-- Google Analytics
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', '', 'auto');
+  ga('send', 'pageview');
+   -->
+
+</script>
+  </head>
+  <!-- Main Body-->
+  <body>
+  <!-- Wrap all page content here -->
+  <div id="wrap">
+    <!-- Navbar header -->
+    <nav class="navbar navbar-default">
+  <div class="container">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="http://smallyellowduck.github.io/"><i class="fa fa-home fa-lg"></i></a>
+    </div>
+    <div id="navbar">
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="http://smallyellowduck.github.io/about/">ABOUT</a></li>
+        <li><a href="http://smallyellowduck.github.io/projects/">PROJECTS</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
+    <section id="projects">
+<div class="container">
+  <h3>Facebook Bot Detection</h3>
+  <div class="panel panel-default">
+    <div class="panel-body">
+    
 	<div id="featured" class="container">
-		<div class="box">
+		<div class="panel-body">
 			<div class="title">
 				<h2>Identifying bots in an online auction</h2>
 			</div>
@@ -80,7 +100,7 @@ Released   : 20130804
 	</div>			
 
 	<div id="featured" class="container">
-		<div class="box">	
+		<div class="panel-body">	
 			<div class="title">
 				<h2>A quick look at the data</h2>
 			</div>
@@ -88,7 +108,7 @@ Released   : 20130804
 			<table>
 			
 			<tr>
-			<td  valign=top width=350> <font style="line-height:2.0"> 
+			<td  valign=top width=350>  
 			<b><ul>A sample auction</ul></b> Examining the bidding activity in one auction suggested a few useful features
 			right off the bat. I was a little unlucky with first auction I picked: one bidder made about 800 bids and completely
 			dominated the auction. Must be a bot, eh? So the mean number of bids per auction, <tt>bids_per_auction_mean</tt> is 
@@ -103,7 +123,7 @@ Released   : 20130804
 			
 			</td>
 			<td valign=top width = 550>
-			<img src="facebook_auction/bids_sample_auction2.png" width = 550>
+			<img src="projects/facebook_auction/bids_sample_auction2.png" width = 550>
 			</td>
 			</tr>
 			</table>	
@@ -118,7 +138,7 @@ Released   : 20130804
 			<table>
 			
 			<tr>
-			<td  valign=top width=900> <font style="line-height:2.0"> 
+			<td  valign=top width=900> 
 			<p><p><b><ul>Bidding action over time</ul></b>Since the time axis had mystery units it was first
 			useful to map the time values to something in hours. I expected that bidding activity would 
 			probably have a periodicity of a day, so I made a histogram of bids over time. Surprise! 
@@ -131,17 +151,17 @@ Released   : 20130804
 			<table>
 			<tr>
 			<td valign=top width = 450>
-			<img src="facebook_auction/bids_over_time.png" width = 450>
+			<img src="projects/facebook_auction/bids_over_time.png" width = 450>
 			</td>
 			<td valign=top width = 450>
-			<img src="facebook_auction/bids_over_time_zoom.png" width = 450>
+			<img src="projects/facebook_auction/bids_over_time_zoom.png" width = 450>
 			</td>
 			</tr>
 			</table>
 			
 			<table>
 			<tr valign=top width=900>
-			<td  valign=top width=900> <font style="line-height:2.0"> 
+			<td  valign=top width=900>  
 			<p><p>In the bids/unit time histogram, each of the three chunks contains about three periods worth of
 			bidding activity, which suggests that each chunk of data is probably three days. The durations 
 			of each chunk are the same (+/- 1 mystery unit) and the durations of the gaps between each chunk are also the same, which
@@ -173,8 +193,8 @@ Released   : 20130804
 			
 			<table>
 			<tr>
-			<td valign=top align=left width=450><font style="line-height:2.0"> 
 			<p><b><ul>Bidding strategy over the course of an auction</ul></b>
+			<td valign=top align=left width=450> 		
 			Because the data is in three chunks, it's impossible to tell if there are any complete auctions - if the 
 			first bid in the data set is sufficiently far from <tt>t_start</tt>, then it's reasonable to assume that this was the first bid in 
 			the auction (ditto for the last bid, where the last bid falls reasonable far from the end of the data set). I would have liked to have created a description of the bidding strategy which included where in the
@@ -185,7 +205,7 @@ Released   : 20130804
 			</td>
 			<td valign=top align=left width=450>
 			<figure>
-			<img src="facebook_auction/bids_over_course_of_auction.png" width=450 >
+			<img src="projects/facebook_auction/bids_over_course_of_auction.png" width=450 >
 			<figcaption width=450></figcaption></figure>
 			</td>	
 			</tr>			
@@ -199,7 +219,7 @@ Released   : 20130804
 	
 			<table>
 			<tr>
-			<td valign=top width = 900><font style="line-height:2.0"> 
+			<td valign=top width = 900> 
 			One way to characterize the variation in how bids were placed is the entropy. 
 			A concrete example of the entropy is the IP entropy: N!/(N_<sub>IP1</sub>! 
 			N<sub>IP2</sub>!... N<sub>IPn</sub>!). N is the total number of bids and N_<sub>IPn</sub> 
@@ -226,14 +246,14 @@ Released   : 20130804
 				<h2>Other useful features</h2>
 			</div>	
 			<table><tr>
-			<td valign=top align=left width=900><font style="line-height:2.0">
+			<td valign=top align=left width=900>
 			The model got additional mileage out of the fraction of bids a user place in
 			each of the 199 countries, as well as the fraction of IPs from which a user
 			placed a bid from which another user who was a bot also placed a bid.
 			</td></tr>
 			</table>
 			<table>
-			<td valign=top align=left width=450><font style="line-height:2.0">
+			<td valign=top align=left width=450>
 			<b><ul>Auction duration</ul></b>
 			Some of the auctions only had bidding activity in one of the three-day chunks, while other auctions included
 			bidding activity in two of the chunks - ie, some of the auctions lasted at least 17 days. It turned out that the
@@ -247,7 +267,7 @@ Released   : 20130804
 			</td>
 			<td valign=top align=left width=550>
 			<figure>
-			<img src="facebook_auction/hist_time_before_auction_end_bots_humans_norm.png" width=450 >
+			<img src="projects/facebook_auction/hist_time_before_auction_end_bots_humans_norm.png" width=450 >
 			<figcaption width=450></figcaption></figure>
 			</td>
 			</tr>
@@ -257,18 +277,17 @@ Released   : 20130804
 				
 	
 	<div id="featured" class="container">
-		<div class="box">	
+		<div class="panel-body">	
 			<div class="title">
 				<h2>Classification</h2>
 			</div>			
 			<table><tr width=460>
 			<td valign=top align=left width=450>
 			<figure>
-			<img src="facebook_auction/hist_cv_scores.png" width=450 >
+			<img src="projects/facebook_auction/hist_cv_scores.png" width=450 >
 			<figcaption width=450></figcaption></figure>
 			</td>			
 			<td width = 440 valign=top>
-			<font style="line-height:2.0">
 			<b><ul>Choosing the algorithm</ul></b>
 			Since this is a classification problem scored by the AUC, the classification algorithm
 			should generate the probabilities for each class. The options include <tt>RandomForestClassifier</tt>, 
@@ -283,8 +302,8 @@ Released   : 20130804
 			</table>
 			
 			<table>
-			<tr>
-			<td width=900 valign=top><font style="line-height:2.0">
+			<tr width=900>
+			<td width=900 valign=top>
 			<b><ul>Assessing the quality of predictions</ul></b>
 			There was a lot of variation in the data set, so quantifying the performance of the classifier was difficult.
 			I used 100 splits (80%-train, 20%-validation) to cross-validate the predictions and then examined the 10th
@@ -299,35 +318,36 @@ Released   : 20130804
 	</div>
 	
 	<div id="featured" class="container">
-		<div class="box">	
+		<div class="panel-body">	
 					
 			<div class="title">
 				<h2>Things I tried that didn't work</h2>
 			</div>	
 					
-			<table>
-			<td valign=top align=left width=450><font style="line-height:2.0">	
-			<b><ul>Weekly bidder entropy</b></ul>
+			<table width=900>
+			<tr width=900>
+			<td valign=top align=left width=400>
+			<b><ul>Weekly bidder entropy</b></ul>				
 			In the training data, a larger fraction of bids by humans takes place in the first data chunk (week0) 
 			than in the third data chunk (week4). Originally, I tried to exploit this as a feature, but eventually I decided
 			that this distribution was more likely a result of how the data had been partitioned into the training
 			and test data sets. When I dropped the week from my model, my leaderboard score went up.
 			
-			<td valign=top width = 450>
-			<img src="facebook_auction/bids_over_time.png" width = 450>
+			<td valign=top width = 500>
+			<img src="projects/facebook_auction/bids_over_time.png" width = 450>
 			</td>
 			</tr>
 			</table>
 			
-			<table>
-			<tr>
-			<td valign=top align=left width=450><font style="line-height:2.0">		
+			<table width = 800>
+			<tr width = 800>
+			<td valign=top align=left width=800>		
 			<b><ul>Using a cluster algorithm to group users which use similar sets of IPs</b></ul>
 			I used <tt>MiniBatchKMeans</tt> to cluster users according to the fraction of bids they placed on IPs that
 			occur more than twice. I was hoping to identify users with multiple accounts. Clustering was computationally
 			expensive and didn't add anything measurable when tested using cross-validation.
 			
-			<b><ul>Feature-weighted linear stacking</b></ul>
+			<p><b><ul>Feature-weighted linear stacking</b></ul>
 			Using <a href="http://arxiv.org/pdf/0911.0460.pdf">feature-weighted linear stacking</a> to blend the results of several 
 			different models didn't produce results any better than <tt>RandomForestClassifier</tt>. In FWLS, the training data
 			is broken into several folds and predictions for different models are generated for each fold. FWLS probably
@@ -336,13 +356,16 @@ Released   : 20130804
 			because <tt>RandomForestClassifier</tt> exploited slightly different features every time the model was fitted on
 			a different fold.
  		
-			<b><ul>Using <tt>payment_account</tt> and <tt>address</tt> data</ul></b>
+			<p><b><ul>Using <tt>payment_account</tt> and <tt>address</tt> data</ul></b>
 			Again, I was hoping to exploit users who were placing bids with multiple accounts. Let's take a look at the 
 			first few lines of train.csv - the file which contains bidder info, along with the outcome
 			(whether the bidder is a human or a robot).			
 			</td>
 			</tr>
+			</table>
 			
+			<br>
+			<table>
 			<tr>
 			<td>
 			<table cellspacing="3">
@@ -360,11 +383,14 @@ Released   : 20130804
 			</table>
 			</td>
 			</tr>
+			</table>
+			<br>
 			
 			
+			<table>
 			<tr width=900 >
-			<td width=900 valign=top><font style="line-height:2.0"> 
-			Many of these account names have been hashed to something that starts with "a3d2de7675556553a5f08e4c88d2c228". I stripped off the last
+			<td width=900 valign=top>
+			<p>Many of these account names have been hashed to something that starts with "a3d2de7675556553a5f08e4c88d2c228". I stripped off the last
 			five elements of the <tt>payment_account</tt> and <tt>address</tt> hashes and looked for duplicates. Using a pivot table
 			with info about repeated values of <tt>address[0:-5]</tt> and <tt>payment_account[0:-5]</tt> didn't improve CV score.
 			</td>
@@ -372,17 +398,33 @@ Released   : 20130804
 			</table>
 				
 		</div>
-		
+
 	</div>
-
-
-
+  </div>
 </div>
+</section>
 
 
 
-<div id="copyright">
-	<p>Copyright (c) 2013 small yellow duck. All rights reserved. Design by <a href="http://www.freecsstemplates.org/" rel="nofollow">FreeCSSTemplates.org</a>.</p>
-</div>
-</body>
+  </div>
+  <!-- Footer -->
+  <footer>
+    <div id="footer">
+        <div class="container">
+            <p class="text-muted">© Kiri</p>
+        </div>
+    </div>
+</footer>
+<div class="footer"></div>
+
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <!-- Bootstrap core JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"
+    integrity="sha256-Sk3nkD6mLTMOF0EOpNtsIry+s1CsaqQC1rVLTAy+0yc= sha512-K1qjQ+NcF2TYO/eI3M6v8EiNYZfA95pQumfvcVrTHtwQVDG+aHRqLi/ETn2uB+1JqwYqVG3LIvdm9lj6imS/pQ=="
+    crossorigin="anonymous"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+
+  </body>
 </html>
